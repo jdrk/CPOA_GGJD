@@ -2,7 +2,7 @@
 
 <?php require_once("functions/selection.php"); ?>
 	
-	<form id="metier" method="POST" action="index.php">
+	<form id="metier" method="POST" action="index.php?page=listevip">
 		<select name="metier">
 			<option>Tout</option>
 			<option>A</option>
