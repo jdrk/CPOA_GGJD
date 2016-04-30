@@ -1,0 +1,88 @@
+CREATE TABLE NATIONALITE
+(
+	idNat VARCHAR(2),
+	nomNat VARCHAR(30),
+	CONSTRAINT pk_pays PRIMARY KEY(idNat)
+);
+
+CREATE TABLE GENRE
+(
+	idGenre VARCHAR(2),
+	libelleGenre VARCHAR(30),
+	CONSTRAINT pk_genre PRIMARY KEY(idGenre)
+);
+
+CREATE TABLE FILM
+(
+	numVisa VARCHAR(6),
+	titreFilm VARCHAR(30) NOT NULL,
+	idGenre VARCHAR(2),
+	anneeSortie INT(4) NOT NULL,
+	CONSTRAINT pk_film PRIMARY KEY(numVisa),
+	CONSTRAINT fk_genre FOREIGN KEY(idGenre) REFERENCES GENRE(idGenre)
+);
+
+CREATE TABLE VIP
+(
+	numVip VARCHAR(3),
+	nomVip VARCHAR(20) NOT NULL,
+	prenomVip VARCHAR(20) NOT NULL,
+	civilite VARCHAR(3) NOT NULL,
+	dateNaissance DATE NOT NULL,
+	lieuNaissance VARCHAR(20) NOT NULL,
+	codeRole VARCHAR(2) NOT NULL,
+	codeStatut VARCHAR(1) NOT NULL,
+	nationalite VARCHAR(30) NOT NULL,
+	CONSTRAINT pk_vip PRIMARY KEY(numVip),
+	CONSTRAINT fk_pays FOREIGN KEY(nationalite) REFERENCES PAYS(idNat)
+);
+
+CREATE TABLE PHOTO
+(
+	numVip VARCHAR(3),
+	idPhoto VARCHAR(3),
+	datePhoto DATE NOT NULL,
+	lieuPhoto VARCHAR(20) NOT NULL,
+	CONSTRAINT pk_photo PRIMARY KEY(numVip,idPhoto),
+	CONSTRAINT fk_photo FOREIGN KEY(numVip) REFERENCES VIP(numVip)
+);
+
+CREATE TABLE NEWEVENT
+(
+	numVip VARCHAR(3),
+	dateMariage DATE NOT NULL,
+	numVipConjoint VARCHAR(3) NOT NULL,
+	lieuMariage VARCHAR(20) NOT NULL,
+	dateDivorce DATE NULL,
+	CONSTRAINT pk_event PRIMARY KEY(numVip,dateMariage),
+	CONSTRAINT fk_event FOREIGN KEY(numVip) REFERENCES VIP(numVip)
+);
+
+CREATE TABLE REALISATEUR
+(
+	numVip VARCHAR(3),
+	numVisa VARCHAR(6),
+	CONSTRAINT pk_realisateur PRIMARY KEY(numVip,numVisa),
+	CONSTRAINT fk_realisateur_vip FOREIGN KEY(numVip) REFERENCES VIP(numVip),
+	CONSTRAINT fk_realisateur_visa FOREIGN KEY(numVisa) REFERENCES FILM(numVisa)
+);
+
+CREATE TABLE ACTEUR
+(
+	numVip VARCHAR(3),
+	numVisa VARCHAR(6),
+	CONSTRAINT pk_acteur PRIMARY KEY(numVip,numVisa),
+	CONSTRAINT fk_acteur_vip FOREIGN KEY(numVip) REFERENCES VIP(numVip),
+	CONSTRAINT fk_acteur_visa FOREIGN KEY(numVisa) REFERENCES FILM(numVisa)
+);
+
+CREATE TABLE OLDEVENT
+(
+	numVip VARCHAR(3),
+	dateMariage DATE NOT NULL,
+	numVipConjoint VARCHAR(3) NOT NULL,
+	lieuMariage VARCHAR(20) NOT NULL,
+	dateDivorce DATE NOT NULL,
+	CONSTRAINT pk_event PRIMARY KEY(numVip,dateMariage),
+	CONSTRAINT fk_event FOREIGN KEY(numVip) REFERENCES VIP(numVip)
+);

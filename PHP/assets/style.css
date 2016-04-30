@@ -1,0 +1,87 @@
+html, body {
+    height: 100%;
+    margin: 0; 
+	padding: 0;
+}
+
+body{
+	display : table;
+    width: 100%;
+	background-color: #eee;
+}
+
+header, footer, nav{
+	font-family: 'Philosopher', sans-serif;
+}
+
+header{
+	font-size: 40pt;
+	background-color: #4F1A5C;
+	color: white;
+	padding: 10px;
+	border-left: solid 15px gold;
+}
+
+nav{
+	background-color: black;
+	padding: 1px;
+}
+
+nav ul{
+	list-style-type: none; 
+}
+
+nav ul li{
+	display: inline;
+	color: white;
+	font-size: 20pt;
+	margin: 0 30px;
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: white;
+}
+
+nav ul li a:hover{
+	text-decoration: none;
+	color: gold;
+	transition: 1s;
+}
+
+table{
+	background-color: white;
+	padding: 15px;
+	margin: auto;
+	width: 75%;
+	border-left: solid 10px gold;
+}
+td img{
+	width: 50%;
+}
+
+.bloc{
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.bloc img{
+	width: 200px;
+}
+
+#space{
+	margin: 3% 8%;
+}
+
+.compteur{
+	text-align: center;
+	color: red;
+}
+
+footer{
+	font-size: 12pt;
+	background-color: #4F1A5C;
+	text-align: center;
+	color: white;
+	display : table-row;
+}
