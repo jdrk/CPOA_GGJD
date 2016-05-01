@@ -5,11 +5,14 @@
  */
 package IHM;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -32,8 +35,9 @@ public class MainScreen extends javax.swing.JFrame {
     public MainScreen(ModeleVip modeleVip, String baseName) {
         this.modeleVip = modeleVip;
 
- 
         initComponents();
+       
+
         this.baseNameTxt.setText(baseName);
         try {
             modeleVip.loadVip();
@@ -75,33 +79,48 @@ public class MainScreen extends javax.swing.JFrame {
         baseIndicTxt = new javax.swing.JLabel();
         baseNameTxt = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableVip = new javax.swing.JTable();
         datenaissanceVip = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        delBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("VoiceLa Administration Tool");
+        setResizable(false);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         numVip.setText("Numéro");
+        jPanel1.add(numVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, -1, -1));
 
         nomVip.setText("Nom");
+        jPanel1.add(nomVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         prenomVip.setText("Prénom");
+        jPanel1.add(prenomVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 106, -1, -1));
 
         numViptxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numViptxtActionPerformed(evt);
             }
         });
+        jPanel1.add(numViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 51, 124, -1));
 
         nomViptxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomViptxtActionPerformed(evt);
             }
         });
+        jPanel1.add(nomViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 77, 124, -1));
+        jPanel1.add(prenomViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 103, 124, -1));
 
         civiliteVip.setText("Civilité");
+        jPanel1.add(civiliteVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 132, -1, -1));
 
         civiliteVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "Mme", " " }));
         civiliteVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -109,10 +128,14 @@ public class MainScreen extends javax.swing.JFrame {
                 civiliteVipboxActionPerformed(evt);
             }
         });
+        jPanel1.add(civiliteVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 129, 124, -1));
 
-        naissanceVip.setText("Naissance");
+        naissanceVip.setText("Naissance (lieu)");
+        jPanel1.add(naissanceVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 158, -1, -1));
+        jPanel1.add(naissanceViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 155, 124, -1));
 
         roleVip.setText("Rôle");
+        jPanel1.add(roleVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         roleVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "R", "AR" }));
         roleVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -120,8 +143,10 @@ public class MainScreen extends javax.swing.JFrame {
                 roleVipboxActionPerformed(evt);
             }
         });
+        jPanel1.add(roleVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 207, 124, -1));
 
         nationaliteVip.setText("Nationalité");
+        jPanel1.add(nationaliteVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 241, -1, -1));
 
         nationaliteVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FR" }));
         nationaliteVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -129,8 +154,10 @@ public class MainScreen extends javax.swing.JFrame {
                 nationaliteVipboxActionPerformed(evt);
             }
         });
+        jPanel1.add(nationaliteVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 238, 124, -1));
 
         statutVip.setText("Statut ");
+        jPanel1.add(statutVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 276, -1, -1));
 
         statutVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "D", "C" }));
         statutVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -138,125 +165,59 @@ public class MainScreen extends javax.swing.JFrame {
                 statutVipboxActionPerformed(evt);
             }
         });
+        jPanel1.add(statutVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 276, 124, -1));
 
-        addBtn.setText("AJOUTER ");
+        addBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cross.png"))); // NOI18N
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 329, 31, -1));
 
-        resetBtn.setText("RESET");
+        resetBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrows.png"))); // NOI18N
         resetBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 368, 31, -1));
 
         baseIndicTxt.setText("Nom de la base : ");
+        jPanel1.add(baseIndicTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         baseNameTxt.setText("Nom d'utilisateur");
+        jPanel1.add(baseNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 11, -1, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jTable1.setModel(modeleVip);
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(jTable1);
+        tableVip.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableVip.setModel(modeleVip);
+        tableVip.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(tableVip);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                            .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(numVip)
-                                .addComponent(prenomVip)
-                                .addComponent(civiliteVip)
-                                .addComponent(naissanceVip)
-                                .addComponent(roleVip)
-                                .addComponent(nationaliteVip)
-                                .addComponent(statutVip)
-                                .addComponent(nomVip))
-                            .addGap(73, 73, 73)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(nationaliteVipbox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(naissanceViptxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(prenomViptxt)
-                                .addComponent(civiliteVipbox, 0, 124, Short.MAX_VALUE)
-                                .addComponent(nomViptxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(numViptxt, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(statutVipbox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(roleVipbox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(datenaissanceVip))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(baseIndicTxt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(baseNameTxt)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(baseIndicTxt)
-                            .addComponent(baseNameTxt))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(numVip)
-                            .addComponent(numViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nomVip)
-                            .addComponent(nomViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(prenomViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prenomVip))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(civiliteVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(civiliteVip))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(naissanceViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(naissanceVip))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(datenaissanceVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(roleVip)
-                            .addComponent(roleVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nationaliteVip)
-                            .addComponent(nationaliteVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(statutVip)
-                            .addComponent(statutVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addBtn)
-                            .addComponent(resetBtn)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 11, 874, 472));
+        jPanel1.add(datenaissanceVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 181, 124, -1));
 
-        eventTab.addTab("Gestion des VIP", jPanel1);
+        jLabel1.setText("Ajouter à la base");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
+
+        jLabel2.setText("Réinitialiser les champs/actualiser la vue");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
+
+        delBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
+        delBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 31, -1));
+
+        jLabel3.setText("Supprimer l'élément sélectionné");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 299, 10));
+
+        eventTab.addTab("Gestion des VIP", new javax.swing.ImageIcon(getClass().getResource("/lux.png")), jPanel1); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -266,10 +227,10 @@ public class MainScreen extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGap(0, 494, Short.MAX_VALUE)
         );
 
-        eventTab.addTab("Gestion des photos", jPanel2);
+        eventTab.addTab("Gestion des photos", new javax.swing.ImageIcon(getClass().getResource("/photo.png")), jPanel2); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -279,10 +240,10 @@ public class MainScreen extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGap(0, 494, Short.MAX_VALUE)
         );
 
-        eventTab.addTab("Evènements", jPanel3);
+        eventTab.addTab("Evènements", new javax.swing.ImageIcon(getClass().getResource("/medical.png")), jPanel3); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -296,6 +257,8 @@ public class MainScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(eventTab, javax.swing.GroupLayout.Alignment.TRAILING)
         );
+
+        eventTab.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -348,17 +311,18 @@ public class MainScreen extends javax.swing.JFrame {
             //leVip.setCivilite(civiliteVipbox.getSelectedItem().toString());
             String d = civiliteVipbox.getSelectedItem().toString();
             
-            if (naissanceViptxt.getText().isEmpty()){
-                throw new Exception("Ce champ ne doit pas être vide");
-            }
-            //leVip.setLieuNaissance(naissanceViptxt.getText());
-            String e = naissanceViptxt.getText();
-            
             if (datenaissanceVip.getText().isEmpty()){
                 throw new Exception("Ce champ ne doit pas être vide");
             }
             //leVip.setDateNaissance(datenaissanceVip.getText());
             String f = datenaissanceVip.getText();
+            
+            
+            if (naissanceViptxt.getText().isEmpty()){
+                throw new Exception("Ce champ ne doit pas être vide");
+            }
+            //leVip.setLieuNaissance(naissanceViptxt.getText());
+            String e = naissanceViptxt.getText();
             
             //leVip.setCodeRole(roleVipbox.getSelectedItem().toString());
             String g = roleVipbox.getSelectedItem().toString();
@@ -383,8 +347,25 @@ public class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
-        // TODO add your handling code here:
+        numViptxt.setText("");
+        nomViptxt.setText("");
+        prenomViptxt.setText("");
+        datenaissanceVip.setText("");
+        naissanceViptxt.setText("");
+        modeleVip.refreshVip();
+        JOptionPane.showMessageDialog(this, "Les champs ont été réinitialisés et la vue actualisée.", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_resetBtnActionPerformed
+
+    private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
+        
+        try {
+            int ligne = tableVip.getSelectedRow();
+            modeleVip.delVip(ligne);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_delBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,13 +379,17 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel civiliteVip;
     private javax.swing.JComboBox<String> civiliteVipbox;
     private javax.swing.JTextField datenaissanceVip;
+    private javax.swing.JButton delBtn;
     private javax.swing.JTabbedPane eventTab;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel naissanceVip;
     private javax.swing.JTextField naissanceViptxt;
     private javax.swing.JLabel nationaliteVip;
@@ -420,5 +405,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> roleVipbox;
     private javax.swing.JLabel statutVip;
     private javax.swing.JComboBox<String> statutVipbox;
+    private javax.swing.JTable tableVip;
     // End of variables declaration//GEN-END:variables
 }

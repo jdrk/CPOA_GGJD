@@ -63,10 +63,10 @@ public class DaoVip {
       
     }
     
-    public void delVip(Vip vip) throws SQLException{
+    public void delVip(String numVip) throws SQLException{
         String requete = "DELETE FROM VIP WHERE NUMVIP = ?";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setInt(1, Integer.parseInt(vip.getNumVip()) );
+        pstmt.setString(1, numVip );
         pstmt.executeUpdate();
         pstmt.close();
     }

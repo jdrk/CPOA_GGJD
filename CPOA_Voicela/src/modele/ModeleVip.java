@@ -68,7 +68,10 @@ public class ModeleVip extends AbstractTableModel {
     }
     
     public void delVip(int ligne)  throws SQLException{
-        int numVip = (int) getValueAt(ligne, 0);
+        String numVip = (String) getValueAt(ligne, 0);
+        System.out.println(numVip + "     test 1");
+        int numVip1 = Integer.parseInt(numVip);
+        System.out.println(numVip1 + "     test 2");
         objetDaoVip.delVip(numVip);
         listeVip.remove(ligne);
         this.fireTableDataChanged();
@@ -76,8 +79,12 @@ public class ModeleVip extends AbstractTableModel {
     
     public void loadVip() throws SQLException{
         objetDaoVip.lireVip(listeVip);
-        fireTableDataChanged();
+        this.fireTableDataChanged();
         
+    }
+    
+    public void refreshVip(){
+        this.fireTableDataChanged();
     }
     
     
