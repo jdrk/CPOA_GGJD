@@ -28,9 +28,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
-              <Component id="eventTab" min="-2" pref="653" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="eventTab" min="-2" pref="1221" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,8 +48,8 @@
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Gestion des listes">
-                <Property name="tabTitle" type="java.lang.String" value="Gestion des listes"/>
+              <JTabbedPaneConstraints tabName="Gestion des VIP">
+                <Property name="tabTitle" type="java.lang.String" value="Gestion des VIP"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -58,113 +58,112 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="addBtn" min="-2" pref="90" max="-2" attributes="0"/>
-                                      <EmptySpace pref="69" max="32767" attributes="0"/>
-                                      <Component id="resetBtn" min="-2" pref="84" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="addBtn" min="-2" pref="90" max="-2" attributes="0"/>
+                                  <EmptySpace pref="74" max="32767" attributes="0"/>
+                                  <Component id="resetBtn" min="-2" pref="84" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="numVip" min="-2" max="-2" attributes="0"/>
+                                      <Component id="prenomVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="civiliteVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="naissanceVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="roleVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nationaliteVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="statutVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomVip" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="numVip" min="-2" max="-2" attributes="0"/>
-                                          <Component id="prenomVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="civiliteVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="naissanceVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="roleVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="nationaliteVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="statutVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="nomVip" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="statutVipbox" max="32767" attributes="0"/>
-                                          <Component id="nationaliteVipbox" max="32767" attributes="0"/>
-                                          <Component id="roleVipbox" pref="119" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="datenaissanceVip" max="32767" attributes="0"/>
-                                                  <Component id="naissaneViptxt" max="32767" attributes="0"/>
-                                                  <Component id="prenomViptxt" alignment="1" max="32767" attributes="0"/>
-                                                  <Component id="civiliteVipbox" alignment="1" pref="119" max="32767" attributes="0"/>
-                                                  <Component id="nomViptxt" max="32767" attributes="0"/>
-                                                  <Component id="numViptxt" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="nationaliteVipbox" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="naissanceViptxt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="prenomViptxt" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="civiliteVipbox" alignment="1" pref="124" max="32767" attributes="0"/>
+                                      <Component id="nomViptxt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="numViptxt" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="statutVipbox" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="roleVipbox" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="datenaissanceVip" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="395" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="baseIndicTxt" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="baseNameTxt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="930" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="baseIndicTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="baseNameTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="baseIndicTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="baseNameTxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="numVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="numViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="nomVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nomViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="prenomViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="prenomVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="civiliteVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="civiliteVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="naissanceViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="naissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="datenaissanceVip" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="roleVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="roleVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="nationaliteVip" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nationaliteVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="statutVip" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="statutVipbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="addBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="resetBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="436" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="numVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="numViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nomVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nomViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="prenomViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="prenomVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="civiliteVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="civiliteVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="naissaneViptxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="naissanceVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="datenaissanceVip" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="roleVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="roleVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nationaliteVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nationaliteVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="statutVip" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="statutVipbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="addBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="resetBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="95" max="32767" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -205,11 +204,10 @@
             <Component class="javax.swing.JComboBox" name="civiliteVipbox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="M"/>
+                    <StringItem index="1" value="Mme"/>
+                    <StringItem index="2" value=" "/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -225,12 +223,7 @@
                 <Property name="text" type="java.lang.String" value="Naissance"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="naissaneViptxt">
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="datenaissanceVip">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="   /    /     "/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="naissanceViptxt">
             </Component>
             <Component class="javax.swing.JLabel" name="roleVip">
               <Properties>
@@ -240,11 +233,10 @@
             <Component class="javax.swing.JComboBox" name="roleVipbox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="A"/>
+                    <StringItem index="1" value="R"/>
+                    <StringItem index="2" value="AR"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -263,11 +255,8 @@
             <Component class="javax.swing.JComboBox" name="nationaliteVipbox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="FR"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -286,11 +275,10 @@
             <Component class="javax.swing.JComboBox" name="statutVipbox">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="M"/>
+                    <StringItem index="1" value="D"/>
+                    <StringItem index="2" value="C"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -324,8 +312,39 @@
             </Component>
             <Component class="javax.swing.JLabel" name="baseNameTxt">
               <Properties>
-                <Property name="text" type="java.lang.String" value="pX"/>
+                <Property name="text" type="java.lang.String" value="Nom d&apos;utilisateur"/>
               </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="jTable1">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="modeleVip" type="code"/>
+                    </Property>
+                    <Property name="autoResizeMode" type="int" value="4"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JTextField" name="datenaissanceVip">
             </Component>
           </SubComponents>
         </Container>
@@ -341,12 +360,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="648" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1216" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="453" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="488" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -363,12 +382,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="648" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1216" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="453" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="488" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
