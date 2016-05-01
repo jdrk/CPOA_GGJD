@@ -4,10 +4,12 @@
 	
 	<form id="metier" method="POST" action="index.php?page=listevip">
 		<select name="metier">
-			<option>Tout</option>
-			<option>A</option>
-			<option>R</option>
-			<option>AR</option>
+			<option selected="selected">Tout</option>
+			<?php
+			echo'<option value="Acteur"'.keepSelected('A').'>Acteur</option>';
+			echo'<option value="Réalisateur"'.keepSelected('R').'>Réalisateur</option>';
+			echo'<option value="Acteur et Réalisateur"'.keepSelected('AR').'>Acteur et Réalisateur</option>';
+			?>
 		</select>
 		<button type="submit">FILTRER</button>
 	</form>

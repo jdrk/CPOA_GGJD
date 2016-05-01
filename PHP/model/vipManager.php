@@ -10,6 +10,14 @@ class vipManager extends Model{
 			$rep->closeCursor();
 			return $all;
 		}
+		if($codeRole=='A' || $codeRole=='R')
+		{
+			$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE (codeRole=:codeRole OR codeRole="AR") AND P.numVip=V.numVip;',
+			array(':codeRole'=>$codeRole));
+			$all=$rep->fetchAll();
+			$rep->closeCursor();
+			return $all;
+		}
 		else
 		{
 			$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE codeRole=:codeRole AND P.numVip=V.numVip;',

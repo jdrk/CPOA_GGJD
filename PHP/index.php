@@ -26,6 +26,18 @@
 				}
 				else
 				{
+					if($_POST['metier']=='Acteur')
+					{
+						$_POST['metier']='A';
+					}
+					if($_POST['metier']=='Réalisateur')
+					{
+						$_POST['metier']='R';
+					}
+					if($_POST['metier']=='Acteur et Réalisateur')
+					{
+						$_POST['metier']='AR';
+					}
 					$req=$obj->getVip($_POST['metier']);
 				}
 				$nbPic = count($req);
