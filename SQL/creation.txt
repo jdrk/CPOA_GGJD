@@ -15,7 +15,7 @@ CREATE TABLE GENRE
 CREATE TABLE FILM
 (
 	numVisa VARCHAR(6),
-	titreFilm VARCHAR(30) NOT NULL,
+	titreFilm VARCHAR(100) NOT NULL,
 	idGenre VARCHAR(2),
 	anneeSortie INT(4) NOT NULL,
 	CONSTRAINT pk_film PRIMARY KEY(numVisa),
@@ -27,7 +27,7 @@ CREATE TABLE VIP
 	numVip VARCHAR(3),
 	nomVip VARCHAR(20) NOT NULL,
 	prenomVip VARCHAR(20) NOT NULL,
-	civilite VARCHAR(3) NOT NULL,
+	civilite VARCHAR(1) NOT NULL,
 	dateNaissance DATE NOT NULL,
 	lieuNaissance VARCHAR(20) NOT NULL,
 	codeRole VARCHAR(2) NOT NULL,
@@ -40,9 +40,9 @@ CREATE TABLE VIP
 CREATE TABLE PHOTO
 (
 	numVip VARCHAR(3),
-	idPhoto VARCHAR(3),
-	datePhoto DATE NOT NULL,
-	lieuPhoto VARCHAR(20) NOT NULL,
+	idPhoto VARCHAR(10),
+	datePhoto DATE NULL,
+	lieuPhoto VARCHAR(20) NULL,
 	CONSTRAINT pk_photo PRIMARY KEY(numVip,idPhoto),
 	CONSTRAINT fk_photo FOREIGN KEY(numVip) REFERENCES VIP(numVip)
 );

@@ -52,7 +52,7 @@ INSERT INTO VIP VALUES("012","COTILLARD","Marion","F","1975-09-30","Paris","AR",
 INSERT INTO VIP VALUES("013","SY","Omar","M","1978-01-20","Trappes","AR","M","FR");
 INSERT INTO VIP VALUES("014","DUJARDIN","Jean","M","1972-06-19","Rueil-Malmaison","AR","D","FR");
 INSERT INTO VIP VALUES("015","LAMY","Alexandra","F","1971-10-14","Alès","AR","D","FR");
-INSERT INTO VIP VALUES("016","COOPER","Bradley","M","1975-01-05","Philadelphie","A","M","UK");
+INSERT INTO VIP VALUES("016","COOPER","Bradley","M","1975-01-05","Philadelphie","AR","M","UK");
 INSERT INTO VIP VALUES("017","NEWELL","Mike","M","1942-03-28","St Albans","R","M","UK");
 INSERT INTO VIP VALUES("018","STEGERS","Bernice","F","1942-03-28","St Albans","A","M","UK");
 INSERT INTO VIP VALUES("019","SODERBERGH","Steven","M","1963-01-14","Atlanta","R","M","US");
@@ -83,7 +83,7 @@ INSERT INTO VIP VALUES("043","SY","Hélène","F","1979-03-14","Paris","A","M","F
 INSERT INTO VIP VALUES("044","ANISTON","Jennifer","F","1969-02-11","Los Angeles","AR","M","US");
 INSERT INTO VIP VALUES("045","HEMING","Emma","F","1978-06-18","Malte","A","M","UK");
 INSERT INTO VIP VALUES("046","MOORE","Demi","F","1962-11-11","Roswell","AR","D","US");
-INSERT INTO VIP VALUES("047","CANET","Guillaume","M","1973-04-10","Boulogne-Billancourt","AR","M","FR");
+INSERT INTO VIP VALUES("047","CANET","Guillaume","M","1973-04-10","Paris","AR","M","FR");
 INSERT INTO VIP VALUES("048","ESPOSITO","Jennifer","F","1973-04-11","New York","A","M","US");
 INSERT INTO VIP VALUES("049","BALSAM","Talia","F","1959-03-05","New York","A","M","US");
 INSERT INTO VIP VALUES("050","WELLS","John","M","1956-05-28","Alexandria","R","C","US");
