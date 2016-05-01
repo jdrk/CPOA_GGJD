@@ -1,27 +1,53 @@
 <?php
 class vipManager extends Model{
 	
-	public function getVip($codeRole){
+	public function getVip($codeRole,$gender){
 		
 		if($codeRole=='Tout')
 		{
-			$rep=$this->executerRequete('SELECT * FROM PHOTOS');
+			if($gender!=null)
+			{
+				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE civilite=:civilite AND P.numVip=V.numVip ORDER BY prenomVip',
+				array(':civilite'=>$gender));
+			}
+			else
+			{
+				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE P.numVip=V.numVip ORDER BY prenomVip');
+			}
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
 			return $all;
+			
 		}
 		if($codeRole=='A' || $codeRole=='R')
 		{
-			$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE (codeRole=:codeRole OR codeRole="AR") AND P.numVip=V.numVip;',
-			array(':codeRole'=>$codeRole));
+			if($gender!=null)
+			{
+				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE (codeRole=:codeRole OR codeRole="AR") AND civilite=:civilite AND P.numVip=V.numVip ORDER BY prenomVip;',
+				array(':codeRole'=>$codeRole,':civilite'=>$gender));
+			}
+			else
+			{
+				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE (codeRole=:codeRole OR codeRole="AR") AND P.numVip=V.numVip ORDER BY prenomVip;',
+				array(':codeRole'=>$codeRole));
+			}
+			
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
 			return $all;
 		}
 		else
 		{
-			$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE codeRole=:codeRole AND P.numVip=V.numVip;',
-			array(':codeRole'=>$codeRole));
+			if($gender!=null)
+			{
+				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE codeRole=:codeRole AND civilite=:civilite AND P.numVip=V.numVip ORDER BY prenomVip;',
+				array(':codeRole'=>$codeRole,':civilite'=>$gender));
+			}
+			else
+			{
+				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE codeRole=:codeRole AND P.numVip=V.numVip ORDER BY prenomVip;',
+				array(':codeRole'=>$codeRole));
+			}
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
 			return $all;

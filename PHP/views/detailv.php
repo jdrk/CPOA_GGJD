@@ -10,7 +10,7 @@
 		$today=date("Y-d-m");
 		$age=$today-$date;
 	?>
-	<table>	
+	<table class="detailv">	
 		<tr>
 			<td rowspan="4"><img src="assets/img/<?php echo $pic['idPhoto'];?>"></td>
 			<td><b><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></b> - <?php echo $age; ?> ans</td>

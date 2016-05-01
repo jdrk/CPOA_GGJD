@@ -50,25 +50,53 @@ nav ul li a:hover{
 	transition: 1s;
 }
 
-table{
+/*début tableau liste vip de vip.php*/
+.vip {
+	margin: 10px auto;
 	background-color: white;
-	padding: 15px;
-	margin: auto;
-	width: 75%;
-	border-left: solid 10px gold;
-}
-td img{
-	width: 50%;
+	border-collapse: collapse;
 }
 
-.bloc{
-	display: inline-block;
-	margin-right: 5px;
+.vip tr{
+	padding: 5px;
 }
 
-.bloc img{
+.vip td{
 	width: 200px;
+	padding: 5px;
 }
+
+.vip td a {
+	text-decoration:none;
+	color: black;
+	font-weight:bold;
+}
+.vip td a:hover {
+	color: #4F1A5C;
+	transition: 1s;
+}
+
+.vip td img {
+	width: 75px;
+}
+/*fin tableau liste vip de vip.php*/
+
+/*debut tableau detail vip de detailv.php*/
+.detailv{
+	margin: 10px auto;
+	padding: 15px;
+	background-color: white;
+}
+
+.detailv td{
+	width: 350px;
+	padding: 5px;
+}
+
+.detailv td img {
+	width: 150px;
+}
+/*fin tableau detail vip de detailv.php*/
 
 #space{
 	margin: 3% 8%;
