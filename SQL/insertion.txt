@@ -43,7 +43,7 @@ INSERT INTO VIP VALUES("003","WILLIS","Bruce","M","1955-03-19","Idar-Oberstein",
 INSERT INTO VIP VALUES("004","WATSON","Emma","F","1990-04-15","Paris","A","C","UK");
 INSERT INTO VIP VALUES("005","RADCLIFFE","Daniel","M","1989-07-23","Londres","A","C","UK");
 INSERT INTO VIP VALUES("006","HUTCHERSON","Josh","M","1992-10-12","Union","A","C","US");
-INSERT INTO VIP VALUES("007","DICAPRIO","Leonardo","M","1994-11-11","Hollywood","A","M","US");
+INSERT INTO VIP VALUES("007","DICAPRIO","Leonardo","M","1974-11-11","Hollywood","A","M","US");
 INSERT INTO VIP VALUES("008","MORETZ","Chloë","F","1997-02-10","Atlanta","A","C","US");
 INSERT INTO VIP VALUES("009","CARTER","Helena","F","1966-05-26","Londres","A","M","UK");
 INSERT INTO VIP VALUES("010","JOLIE","Angelina","F","1975-06-04","Los Angeles","AR","M","US");
