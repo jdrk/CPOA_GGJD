@@ -53,12 +53,17 @@ public class DaoVip {
         pstmt.setString(2, vip.getNomVip());
         pstmt.setString(3,vip.getPrenomVip());
         pstmt.setString(4, vip.getCivilite());
-        pstmt.setString(5, vip.getLieuNaissance());
+        pstmt.setString(5, vip.getDateNaissance());
         pstmt.setString(6, vip.getLieuNaissance());
         pstmt.setString(7, vip.getCodeRole());
         pstmt.setString(8, vip.getCodeStatut());
         //pstmt.setString(9, vip.getNationalite());
+        String photoAdd = "INSERT INTO PHOTOS VALUES(?, 'P00.jpg',null,null)";
+        PreparedStatement pstmt2 = connexion.prepareStatement(photoAdd);
+        pstmt2.setString(1, vip.getNumVip());
+        pstmt2.executeUpdate();
         pstmt.executeUpdate();
+        pstmt2.close();
         pstmt.close();
       
     }

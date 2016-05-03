@@ -7,9 +7,11 @@ package appli;
 
 import DA.DaoVip;
 import DA.Source;
+import IHM.Connexion;
 import IHM.MainScreen;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.PasswordAuthentication;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -31,7 +33,7 @@ public class Appli {
     private static DataSource source;
     
     
-        public static void main(String args[]) throws IOException, FileNotFoundException, SQLException {
+        public static void main(String args[]) throws IOException, FileNotFoundException, SQLException, Exception {
         
         // Look and Feel de windows
         try {
@@ -40,8 +42,23 @@ public class Appli {
             System.out.print(e.getMessage());
         }
 
-        source = Source.getOracleDataSourceDAO();
-        connexion = source.getConnection();
+        
+        boolean etat = false;
+        do {
+            Connexion co = new Connexion(null);
+            PasswordAuthentication login = co.identifier();
+            try {
+                source = Source.getSource(login);
+                connexion = source.getConnection();
+                etat=true;
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(null, "Login incorrect : "  + e.getMessage(), "Erreur", JOptionPane.WARNING_MESSAGE);
+            }
+            
+            
+        } while (etat == false);
+        
+
         
         try{
             daoVip = new DaoVip(connexion);

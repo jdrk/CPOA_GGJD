@@ -1,45 +1,48 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package DA;
 
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.SQLException;
+import java.net.PasswordAuthentication;
 import java.util.Properties;
 import javax.sql.DataSource;
-import oracle.jdbc.pool.OracleDataSource;
 
 /**
  *
- * @author Guillaume
+ * @author Alain
  */
-public class Source extends OracleDataSource{
-       
-    private static DaoVip ods;
-    
-    private Source() throws SQLException{   
-    }
-    
-     public static OracleDataSource getOracleDataSourceDAO() throws FileNotFoundException, IOException, SQLException{
-        Properties props=new Properties();
-        
-        InputStream fichier = Source.class.getClassLoader().getResourceAsStream("connexion.properties");
-       
+public class Source {
+
+    /**
+     *
+     * @param login
+     * @return
+     * @throws Exception
+     */
+    public static DataSource getSource(PasswordAuthentication login) throws Exception {
+        // récupération des informations d'authentification
+        String user = login.getUserName();
+        String pwd = new String(login.getPassword());
+        // création d'un objet Properties à parir du fichier 
+        Properties props = new Properties();
+        FileInputStream fichier = new FileInputStream("src/connexion.properties");
         props.load(fichier);
-        OracleDataSource ods=new OracleDataSource();
-        ods.setDriverType(props.getProperty("Pilote"));
-        ods.setPortNumber(Integer.parseInt(props.getProperty("Port")));
-        ods.setServiceName(props.getProperty("Base"));
-        ods.setUser(props.getProperty("User"));
-        ods.setPassword(props.getProperty("Password"));
-        ods.setServerName(props.getProperty("Serveur"));
-        return ods;
+        MysqlDataSource ds = new MysqlDataSource();
+        ds.setPortNumber(Integer.parseInt(props.getProperty("port")));
+        ds.setDatabaseName(props.getProperty("service"));
+        ds.setServerName(props.getProperty("serveur"));
+        ds.setUser(user);
+        ds.setPassword(pwd);
+        return ds;
     }
+
+
      
      public static String getUserName() throws FileNotFoundException, IOException{
          Properties props=new Properties();
@@ -53,3 +56,4 @@ public class Source extends OracleDataSource{
     
     
 }
+

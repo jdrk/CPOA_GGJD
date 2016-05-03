@@ -86,41 +86,36 @@ public class MainScreen extends javax.swing.JFrame {
         delBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        naissanceVip1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("VoiceLa Administration Tool");
         setResizable(false);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        numVip.setText("Numéro");
-        jPanel1.add(numVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 54, -1, -1));
+        numVip.setText("Numéro VIP");
 
         nomVip.setText("Nom");
-        jPanel1.add(nomVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         prenomVip.setText("Prénom");
-        jPanel1.add(prenomVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 106, -1, -1));
 
         numViptxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numViptxtActionPerformed(evt);
             }
         });
-        jPanel1.add(numViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 51, 124, -1));
 
         nomViptxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomViptxtActionPerformed(evt);
             }
         });
-        jPanel1.add(nomViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 77, 124, -1));
-        jPanel1.add(prenomViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 103, 124, -1));
 
         civiliteVip.setText("Civilité");
-        jPanel1.add(civiliteVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 132, -1, -1));
 
         civiliteVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "Mme", " " }));
         civiliteVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -128,14 +123,10 @@ public class MainScreen extends javax.swing.JFrame {
                 civiliteVipboxActionPerformed(evt);
             }
         });
-        jPanel1.add(civiliteVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 129, 124, -1));
 
-        naissanceVip.setText("Naissance (lieu)");
-        jPanel1.add(naissanceVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 158, -1, -1));
-        jPanel1.add(naissanceViptxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 155, 124, -1));
+        naissanceVip.setText("Date ");
 
         roleVip.setText("Rôle");
-        jPanel1.add(roleVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         roleVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "R", "AR" }));
         roleVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -143,10 +134,8 @@ public class MainScreen extends javax.swing.JFrame {
                 roleVipboxActionPerformed(evt);
             }
         });
-        jPanel1.add(roleVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 207, 124, -1));
 
         nationaliteVip.setText("Nationalité");
-        jPanel1.add(nationaliteVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 241, -1, -1));
 
         nationaliteVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FR" }));
         nationaliteVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -154,10 +143,8 @@ public class MainScreen extends javax.swing.JFrame {
                 nationaliteVipboxActionPerformed(evt);
             }
         });
-        jPanel1.add(nationaliteVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 238, 124, -1));
 
         statutVip.setText("Statut ");
-        jPanel1.add(statutVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 276, -1, -1));
 
         statutVipbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "D", "C" }));
         statutVipbox.addActionListener(new java.awt.event.ActionListener() {
@@ -165,15 +152,14 @@ public class MainScreen extends javax.swing.JFrame {
                 statutVipboxActionPerformed(evt);
             }
         });
-        jPanel1.add(statutVipbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 276, 124, -1));
 
         addBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cross.png"))); // NOI18N
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 329, 31, -1));
 
         resetBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/arrows.png"))); // NOI18N
         resetBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -181,13 +167,10 @@ public class MainScreen extends javax.swing.JFrame {
                 resetBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 368, 31, -1));
 
         baseIndicTxt.setText("Nom de la base : ");
-        jPanel1.add(baseIndicTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         baseNameTxt.setText("Nom d'utilisateur");
-        jPanel1.add(baseNameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 11, -1, -1));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -196,14 +179,9 @@ public class MainScreen extends javax.swing.JFrame {
         tableVip.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(tableVip);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(332, 11, 874, 472));
-        jPanel1.add(datenaissanceVip, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 181, 124, -1));
-
         jLabel1.setText("Ajouter à la base");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, -1));
 
         jLabel2.setText("Réinitialiser les champs/actualiser la vue");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
 
         delBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
         delBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -211,11 +189,158 @@ public class MainScreen extends javax.swing.JFrame {
                 delBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 31, -1));
 
         jLabel3.setText("Supprimer l'élément sélectionné");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 299, 10));
+
+        naissanceVip1.setText("Naissance (lieu)");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(baseIndicTxt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(baseNameTxt))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(numVip)
+                        .addGap(92, 92, 92)
+                        .addComponent(numViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nomVip)
+                        .addGap(127, 127, 127)
+                        .addComponent(nomViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(prenomVip)
+                        .addGap(112, 112, 112)
+                        .addComponent(prenomViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(civiliteVip)
+                        .addGap(117, 117, 117)
+                        .addComponent(civiliteVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(naissanceVip1)
+                        .addGap(73, 73, 73)
+                        .addComponent(naissanceViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(naissanceVip)
+                        .addGap(122, 122, 122)
+                        .addComponent(datenaissanceVip, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(roleVip)
+                        .addGap(127, 127, 127)
+                        .addComponent(roleVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nationaliteVip)
+                        .addGap(97, 97, 97)
+                        .addComponent(nationaliteVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(statutVip)
+                        .addGap(115, 115, 115)
+                        .addComponent(statutVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(resetBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel2))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(delBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel3)))
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 874, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(baseIndicTxt)
+                            .addComponent(baseNameTxt))
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(numVip))
+                            .addComponent(numViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(nomVip))
+                            .addComponent(nomViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(prenomVip))
+                            .addComponent(prenomViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(civiliteVip))
+                            .addComponent(civiliteVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(naissanceVip1))
+                            .addComponent(naissanceViptxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(datenaissanceVip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(naissanceVip)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(roleVip))
+                            .addComponent(roleVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(nationaliteVip))
+                            .addComponent(nationaliteVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statutVip)
+                            .addComponent(statutVipbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addBtn)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel1)))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(resetBtn)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel2)))
+                        .addGap(9, 9, 9)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(delBtn)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel3))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         eventTab.addTab("Gestion des VIP", new javax.swing.ImageIcon(getClass().getResource("/lux.png")), jPanel1); // NOI18N
 
@@ -245,11 +370,50 @@ public class MainScreen extends javax.swing.JFrame {
 
         eventTab.addTab("Evènements", new javax.swing.ImageIcon(getClass().getResource("/medical.png")), jPanel3); // NOI18N
 
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1216, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 494, Short.MAX_VALUE)
+        );
+
+        eventTab.addTab("Gestion des Films", jPanel4);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1216, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 494, Short.MAX_VALUE)
+        );
+
+        eventTab.addTab("Gestion des Acteurs", jPanel5);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1216, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 494, Short.MAX_VALUE)
+        );
+
+        eventTab.addTab("Gestion des Réalisateurs", jPanel6);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(eventTab, javax.swing.GroupLayout.PREFERRED_SIZE, 1221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -361,6 +525,7 @@ public class MainScreen extends javax.swing.JFrame {
         try {
             int ligne = tableVip.getSelectedRow();
             modeleVip.delVip(ligne);
+            JOptionPane.showMessageDialog(this, "VIP supprimé avec succès ! ", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -387,10 +552,14 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel naissanceVip;
+    private javax.swing.JLabel naissanceVip1;
     private javax.swing.JTextField naissanceViptxt;
     private javax.swing.JLabel nationaliteVip;
     private javax.swing.JComboBox<String> nationaliteVipbox;

@@ -24,7 +24,7 @@ public class ModeleVip extends AbstractTableModel {
     
     public ModeleVip(DaoVip objetDaoVip){
         this.listeVip = new ArrayList<>();
-        this.titre = new String[]{"Numéro", "Nom","Prénom", "Civilité", "Date de naissance","Lieu","Role","Statut","Nationalité"};
+        this.titre = new String[]{"Numéro VIP", "Nom","Prénom", "Civilité", "Date de naissance","Lieu de naissance","Rôle","Statut marital","Nationalité"};
         this.objetDaoVip = objetDaoVip;
     }
     
