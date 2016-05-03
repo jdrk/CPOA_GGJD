@@ -26,6 +26,7 @@ header{
 nav{
 	background-color: black;
 	padding: 1px;
+	text-align: center;
 }
 
 nav ul{
@@ -35,7 +36,7 @@ nav ul{
 nav ul li{
 	display: inline;
 	color: white;
-	font-size: 20pt;
+	font-size: 15pt;
 	margin: 0 30px;
 }
 
@@ -84,13 +85,13 @@ nav ul li a:hover{
 /*debut tableau detail vip de detailv.php*/
 .detailv{
 	margin: 10px auto;
-	padding: 15px;
+	padding: 15px 150px 15px 15px;
 	background-color: white;
 }
 
 .detailv td{
-	width: 350px;
 	padding: 5px;
+	width: 350px;
 }
 
 .detailv td img {

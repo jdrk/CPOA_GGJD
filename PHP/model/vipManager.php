@@ -5,7 +5,7 @@ class vipManager extends Model{
 		
 		if($codeRole=='Tout')
 		{
-			if($gender!=null)
+			if($gender!="MF")
 			{
 				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE civilite=:civilite AND P.numVip=V.numVip ORDER BY prenomVip',
 				array(':civilite'=>$gender));
@@ -21,7 +21,7 @@ class vipManager extends Model{
 		}
 		if($codeRole=='A' || $codeRole=='R')
 		{
-			if($gender!=null)
+			if($gender!="MF")
 			{
 				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE (codeRole=:codeRole OR codeRole="AR") AND civilite=:civilite AND P.numVip=V.numVip ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole,':civilite'=>$gender));
@@ -38,7 +38,7 @@ class vipManager extends Model{
 		}
 		else
 		{
-			if($gender!=null)
+			if($gender!="MF")
 			{
 				$rep=$this->executerRequete('SELECT * FROM PHOTOS P, VIP V WHERE codeRole=:codeRole AND civilite=:civilite AND P.numVip=V.numVip ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole,':civilite'=>$gender));

@@ -1,7 +1,7 @@
 <?php
 	//données nécessaire à la connexion à la bdd
 	$host ="localhost";
-	$user ="p1401508";
-	$password ="211679";
-	$nombase ="p1401508";
+	$user ="p1422528";
+	$password ="234358";
+	$nombase ="p1422528";
 ?>

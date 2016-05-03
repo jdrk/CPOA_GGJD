@@ -20,9 +20,10 @@
 			{
 				$obj=new vipManager();
 				
-				if($_POST['metier']=='Tout')
+				if($_POST['metier']=='Tout'&& isset($_POST['gender']))
 				{
 					$req=$obj->getVip('Tout',$_POST['gender']);
+					$gender=$_POST['gender'];
 				}
 				else
 				{
@@ -41,10 +42,12 @@
 					if(isset($_POST['gender']))
 					{
 						$req=$obj->getVip($_POST['metier'],$_POST['gender']);
+						$gender=$_POST['gender'];
 					}
 					else
 					{
-						$req=$obj->getVip($_POST['metier'],null);
+						$req=$obj->getVip($_POST['metier'],"MF");
+						$gender="MF";
 					}
 				}
 				$nbPic = count($req);
@@ -52,7 +55,8 @@
 			else
 			{
 				$obj=new vipManager();
-				$req=$obj->getVip('Tout',null);
+				$req=$obj->getVip('Tout',"MF");
+				$gender="MF";
 				$nbPic = count($req);
 			}
 			include('views/vip.php');	

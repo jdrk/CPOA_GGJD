@@ -11,9 +11,9 @@
 			echo'<option value="Acteur et Réalisateur"'.keepSelected('AR').'>Acteur et Réalisateur</option>';
 			?>
 		</select>
-		<input type="radio" name="gender"<?php if (isset($gender) && $gender=="M") echo "checked";?>value="M">Masculin
-		<input type="radio" name="gender"<?php if (isset($gender) && $gender=="F") echo "checked";?>value="F">Féminin
-		
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="M")) echo "checked";?> value="M">Masculin
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="F")) echo "checked";?> value="F">Féminin
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="MF")) echo "checked";?> value="MF">Indifférent
 		<button type="submit">FILTRER</button>
 	</form>
 	
