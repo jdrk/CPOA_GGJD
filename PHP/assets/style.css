@@ -52,6 +52,38 @@ nav ul li a:hover{
 }
 
 /*début tableau liste vip de vip.php*/
+
+#vipform{
+	text-align: center;
+}
+
+select{
+	height: 25px;
+	background-color: #4F1A5C;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 0 5px;
+	outline: none;
+	cursor: pointer;
+}
+
+select option{
+	height: 25px;
+	padding: 0 5px;
+	outline: none;
+}
+
+button{
+	border-radius: 5px;
+	background-color: #4F1A5C;
+	height: 25px;
+	color: white;
+	outline: none;
+	border: none;
+	cursor: pointer;
+}
+
 .vip {
 	margin: 10px auto;
 	background-color: white;
@@ -98,6 +130,65 @@ nav ul li a:hover{
 	width: 150px;
 }
 /*fin tableau detail vip de detailv.php*/
+
+/*film*/
+
+#bloc{
+	
+	text-align: center;
+}
+
+#bloc img{
+	width : 150px;
+	border: solid 10px white;
+	margin: 1px 20px;
+	display: inline;
+}
+/*fin film*/
+
+/*detailf*/
+
+#detailf{
+	background-color: white;
+	padding: 1px 10px;
+	width: 20%;
+	float: left;
+}
+
+#detailf img{
+	width: 100%;
+}
+
+#casting{
+	background-color: white;
+	width: 65%;
+	float: right;
+	margin-bottom: 25px;
+	padding: 25px;
+}
+
+.vipF{
+	display: inline-block;
+	width: 150px;
+	text-align: center;
+	padding: 0px 10px;
+}
+
+.vipF img{
+	width: 150px;
+}
+
+.vipF a{
+	text-decoration: none;
+	color: black;
+}
+
+.vipF a:hover{
+	color: #4F1A5C;
+	transition:1s;
+}
+
+/*fin detailf*/
 
 #space{
 	margin: 3% 8%;

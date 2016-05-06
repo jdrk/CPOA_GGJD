@@ -12,7 +12,7 @@
 	?>
 	<table class="detailv">	
 		<tr>
-			<td rowspan="4"><img src="assets/img/<?php echo $pic['idPhoto'];?>"></td>
+			<td rowspan="4"><img src="assets/img/vip/<?php echo $pic['idProfil'];?>" alt="<?php echo $pic['idProfil']; ?>"></td>
 			<td><b><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></b> - <?php echo $age; ?> ans</td>
 		</tr>
 		

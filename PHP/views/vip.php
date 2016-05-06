@@ -2,7 +2,7 @@
 
 <?php require_once("functions/selection.php"); ?>
 	
-	<form id="metier" method="POST" action="index.php?page=listevip">
+	<form id="vipform" method="POST" action="index.php?page=listevip">
 		<select name="metier">
 			<option selected="selected">Tout</option>
 			<?php
@@ -23,8 +23,8 @@
 	{?>
 	<table class=vip>
 		<tr>
-			<td><a href="index.php?page=vip&amp;photo=<?php echo $data['numVip'];?>"><img src="assets/img/<?php echo $data['idPhoto'];?>" alt="vip"/></a></td>
-			<td><a href="index.php?page=vip&amp;photo=<?php echo $data['numVip'];?>"><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></a></td>
+			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>"><img src="assets/img/vip/<?php echo $data['idProfil'];?>" alt="<?php echo $data['idProfil'];?>"/></a></td>
+			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>"><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></a></td>
 			<td>
 			<?php 
 				//calcul age :

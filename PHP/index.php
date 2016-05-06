@@ -2,18 +2,11 @@
 	
 	require_once('model/model.php');
 	require_once('model/vipManager.php');
-
+	require_once('model/filmManager.php');
+	
 	if(isset($_GET['page']))	
 	{
-		if($_GET['page']=='vip')
-		{	
-			$detail=new vipManager();
-			$data=$detail->getDetails($_GET['photo']);
-			$picture=new vipManager();
-			$pic=$picture->getPhotos($_GET['photo']);
-			include('views/detailv.php');
-		}
-		
+	
 		if($_GET['page']=='listevip')
 		{
 			if(isset($_POST['metier']))
@@ -59,12 +52,37 @@
 				$gender="MF";
 				$nbPic = count($req);
 			}
-			include('views/vip.php');	
+			include('views/vip.php');
+		}
+		
+		if($_GET['page']=='vip')
+		{	
+			$detail=new vipManager();
+			$data=$detail->getDetails($_GET['profil']);
+			$picture=new vipManager();
+			$pic=$picture->getProfil($_GET['profil']);
+			include('views/detailv.php');
 		}
 		
 		if($_GET['page']=='listefilm')
 		{
-			include("views/film.php");
+			$affiche= new filmManager();
+			$req=$affiche->getFilm('Tout');
+			$nbPic = count($req);
+			include('views/film.php');
+		}
+		
+		if($_GET['page']=='film')
+		{	
+			$detail=new filmManager();
+			$data=$detail->getDetails($_GET['affiche']);
+			$picture=new filmManager();
+			$pic=$picture->getAffiche($_GET['affiche']);
+			$casting=new filmManager();
+			$req=$casting->getCasting($_GET['affiche']);
+			$producer=new filmManager();
+			$req2=$producer->getProducer($_GET['affiche']);
+			include('views/detailf.php');
 		}
 	}
 	else
