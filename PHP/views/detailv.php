@@ -1,19 +1,17 @@
 <?php $content=ob_start();?>
 
+<?php require_once("functions/age.php");?>
+
 	<?php if(isset($data)){
 		//formatage de la date :
 		$date=$data['dateNaissance'];
 		setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
 		$birth = strftime("%d %B %Y",strtotime($date));
-		
-		//calcul age :
-		$today=date("Y-d-m");
-		$age=$today-$date;
 	?>
 	<table class="detailv">	
 		<tr>
 			<td rowspan="4"><img src="assets/img/vip/<?php echo $pic['idProfil'];?>" alt="<?php echo $pic['idProfil']; ?>"></td>
-			<td><b><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></b> - <?php echo $age; ?> ans</td>
+			<td><b><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></b> - <?php echo age($data['dateNaissance']);?> ans</td>
 		</tr>
 		
 		<tr>

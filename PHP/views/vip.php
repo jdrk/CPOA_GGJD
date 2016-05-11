@@ -1,6 +1,7 @@
 <?php $content=ob_start(); ?>
 
-<?php require_once("functions/selection.php"); ?>
+<?php require_once("functions/selection.php");?>
+<?php require_once("functions/age.php");?>
 	
 	<form id="vipform" method="POST" action="index.php?page=listevip">
 		<select name="metier">
@@ -11,9 +12,9 @@
 			echo'<option value="Acteur et Réalisateur"'.keepSelected('AR').'>Acteur et Réalisateur</option>';
 			?>
 		</select>
-		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="M")) echo "checked";?> value="M">Masculin
-		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="F")) echo "checked";?> value="F">Féminin
-		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="MF")) echo "checked";?> value="MF">Indifférent
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="M")) echo "checked";?> value="M"><i class="fa fa-mars" aria-hidden="true"></i>
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="F")) echo "checked";?> value="F"><i class="fa fa-venus" aria-hidden="true"></i>
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="MF")) echo "checked";?> value="MF"><i class="fa fa-venus-mars" aria-hidden="true"></i>
 		<button type="submit">FILTRER</button>
 	</form>
 	
@@ -25,14 +26,7 @@
 		<tr>
 			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>"><img src="assets/img/vip/<?php echo $data['idProfil'];?>" alt="<?php echo $data['idProfil'];?>"/></a></td>
 			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>"><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></a></td>
-			<td>
-			<?php 
-				//calcul age :
-				$today=date("Y-d-m");
-				echo $age=$today-$data['dateNaissance'];
-			?>
-			 ans
-			</td>
+			<td><?php echo age($data['dateNaissance']);?> ans</td>
 			
 				<?php 
 				if($data['codeRole']=='AR' ){
