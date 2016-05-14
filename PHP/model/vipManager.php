@@ -69,5 +69,13 @@ class vipManager extends Model{
 		$rep->closeCursor();
 		return $pic;
 	}
+	
+	public function getPresent($numVip){
+		$rep=$this->executerRequete('SELECT * FROM ACTEUR A, AFFICHE AF WHERE A.numVisa=AF.numVisa AND numVip=:numVip',
+		array(':numVip'=>$numVip));
+		$aff=$rep->fetchAll();
+		$rep->closeCursor();
+		return $aff;
+	}
 }
 ?>

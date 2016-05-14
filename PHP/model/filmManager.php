@@ -3,7 +3,7 @@ class filmManager extends Model{
 	
 	public function getFilm($genre)
 	{
-		if($genre='Tout')
+		if($genre=='Tout')
 		{
 			$rep=$this->executerRequete('SELECT * FROM AFFICHE A, FILM F WHERE A.numVisa=F.numVisa ORDER BY titreFilm');
 			$all=$rep->fetchAll();
@@ -12,12 +12,20 @@ class filmManager extends Model{
 		}
 		else
 		{
-			$rep=$this->executerRequete('SELECT * FROM FILM WHERE idGenre=:genre',
+			$rep=$this->executerRequete('SELECT * FROM AFFICHE A, FILM F, GENRE G WHERE A.numVisa=F.numVisa AND F.idGenre=G.idGenre AND libelleGenre=:genre',
 			array(':genre'=>$genre));
-			$all=$rep->fetch();
+			$all=$rep->fetchAll();
 			$rep->closeCursor();
 			return $all;
 		}
+	}
+	
+	public function getGenre()
+	{
+		$rep=$this->executerRequete('SELECT * FROM GENRE');
+		$tab=$rep->fetchAll();
+		$rep->closeCursor();
+		return $tab;
 	}
 	
 	public function getDetails($numVisa){

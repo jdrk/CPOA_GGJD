@@ -11,7 +11,7 @@
 	
 	<body>
 	
-		<header>VIP Story</header>
+		<header>Voicela</header>
 			<nav>
 				<ul>
 					<li><a href="index.php"><i class="fa fa-bolt" aria-hidden="true"></i> SCOOP</a></li>

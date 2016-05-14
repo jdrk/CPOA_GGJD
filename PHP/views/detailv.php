@@ -46,10 +46,23 @@
 					echo "<td>Réalisatrice</td>";
 				}
 			}
-			?>
+	}?>
 		</tr>
-		
 	</table>
-<?php } $content=ob_get_clean(); ?>
+	
+	<?php if($nbaff!=0){
+	echo'<div id="joue">';
+	echo'<h1>Filmographie</h1>';
+		foreach($req as $aff){?>	
+			<a href="index.php?page=film&amp;affiche=<?php echo $aff['numVisa'];?>"><img src="assets/img/film/<?php echo $aff['idAffiche'];?>" alt="<?php echo $aff['numVisa'];?>"/></a>
+		<?php } 
+	echo'</div>';
+	} ?>
+	
+	<div id="conjoint">
+		<p>BLOC 2</p>
+	</div>
+	
+<?php $content=ob_get_clean(); ?>
 <?php $title=$data['prenomVip'].' '.$data['nomVip']; $content; ?>
 <?php include("views/layout.php"); ?>

@@ -4,7 +4,7 @@
 			<p><img src="assets/img/film/<?php echo $pic['idAffiche'];?>" alt="<?php echo $pic['idAffiche'];?>"/></a></p>
 			<p><b><?php echo $data['titreFilm']; ?></b></p>
 			<p>Sortie en <?php echo $data['anneeSortie']; ?></p>
-			<p>Genre <?php echo $data['libelleGenre']; ?></p>
+			<p><?php echo $data['libelleGenre']; ?></p>
 			<p>Visa d'exploitation n°<?php echo $data['numVisa']; ?></p>
 		</div>
 		
@@ -31,5 +31,5 @@
 		</div>
 		
 <?php $content=ob_get_clean(); ?>
-<?php $title='Liste FILMS'; $content; ?>
+<?php $title=$data['titreFilm']; $content; ?>
 <?php include("views/layout.php"); ?>

@@ -3,13 +3,13 @@
 <?php require_once("functions/selection.php");?>
 <?php require_once("functions/age.php");?>
 	
-	<form id="vipform" method="POST" action="index.php?page=listevip">
+	<form id="form" method="POST" action="index.php?page=listevip">
 		<select name="metier">
 			<option selected="selected">Tout</option>
 			<?php
-			echo'<option value="Acteur"'.keepSelected('A').'>Acteur</option>';
-			echo'<option value="Réalisateur"'.keepSelected('R').'>Réalisateur</option>';
-			echo'<option value="Acteur et Réalisateur"'.keepSelected('AR').'>Acteur et Réalisateur</option>';
+			echo'<option value="Acteur"'.keepSelected('A',$libelle).'>Acteur</option>';
+			echo'<option value="Réalisateur"'.keepSelected('R',$libelle).'>Réalisateur</option>';
+			echo'<option value="Acteur et Réalisateur"'.keepSelected('AR',$libelle).'>Acteur et Réalisateur</option>';
 			?>
 		</select>
 		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="M")) echo "checked";?> value="M"><i class="fa fa-mars" aria-hidden="true"></i>

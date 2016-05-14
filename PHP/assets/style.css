@@ -53,7 +53,7 @@ nav ul li a:hover{
 
 /*début tableau liste vip de vip.php*/
 
-#vipform{
+#form{
 	text-align: center;
 }
 
@@ -129,6 +129,33 @@ button{
 .detailv td img {
 	width: 150px;
 }
+
+#joue{
+	background-color: white;
+	width: 22%;
+	float: left;
+	padding: 0px 15px 15px 15px;
+	margin-bottom: 35px;
+	margin-left: 85px;
+}
+
+#joue img{
+	width: 75px;
+}
+
+#joue h1{
+	font-size: 15pt;
+}
+
+#conjoint{
+	background-color: white;
+	width: 55%;
+	float: right;
+	padding: 0px 15px 15px 15px;
+	margin-bottom: 35px;
+	margin-right: 85px;
+}
+
 /*fin tableau detail vip de detailv.php*/
 
 /*film*/
