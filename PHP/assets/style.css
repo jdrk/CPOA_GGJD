@@ -116,44 +116,52 @@ button{
 
 /*debut tableau detail vip de detailv.php*/
 .detailv{
-	margin: 10px auto;
+	width:100%;
+	margin: 10px 0;
 	padding: 15px 150px 15px 15px;
 	background-color: white;
 }
 
 .detailv td{
 	padding: 5px;
-	width: 350px;
+	width: 500px;
 }
 
 .detailv td img {
 	width: 150px;
 }
 
-#joue{
-	background-color: white;
-	width: 22%;
-	float: left;
-	padding: 0px 15px 15px 15px;
-	margin-bottom: 35px;
-	margin-left: 85px;
+#blocFC{
+	width: 100%;
 }
 
-#joue img{
+#filmo{
+	background-color: white;
+	float: left;
+	width: 30%;
+	margin-bottom: 35px;
+	padding: 0 15px 15px 15px;
+}
+
+#filmo img{
 	width: 75px;
 }
 
-#joue h1{
+#filmo h1{
 	font-size: 15pt;
 }
 
-#conjoint{
+#statut{
 	background-color: white;
-	width: 55%;
-	float: right;
-	padding: 0px 15px 15px 15px;
-	margin-bottom: 35px;
-	margin-right: 85px;
+	float: left;
+	width: 62%;
+	float : right;
+	padding: 0 15px 15px 15px;
+
+}
+
+#statut h1{
+	font-size: 15pt;
 }
 
 /*fin tableau detail vip de detailv.php*/
@@ -218,12 +226,20 @@ button{
 /*fin detailf*/
 
 #space{
-	margin: 3% 8%;
+	width:70%;
+	margin: 35px auto;
 }
 
 .compteur{
 	text-align: center;
 	color: #4F1A5C;
+}
+
+#error{
+	background-color:#F6B3B3;
+	padding: 15px 30px;
+	border-left: solid 5px red;
+	
 }
 
 footer{

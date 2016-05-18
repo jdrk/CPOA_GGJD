@@ -7,8 +7,8 @@
 		<select name="metier">
 			<option selected="selected">Tout</option>
 			<?php
-			echo'<option value="Acteur"'.keepSelected('A',$libelle).'>Acteur</option>';
-			echo'<option value="Réalisateur"'.keepSelected('R',$libelle).'>Réalisateur</option>';
+			echo'<option value="Acteur"'.keepSelected('AC',$libelle).'>Acteur</option>';
+			echo'<option value="Réalisateur"'.keepSelected('RE',$libelle).'>Réalisateur</option>';
 			echo'<option value="Acteur et Réalisateur"'.keepSelected('AR',$libelle).'>Acteur et Réalisateur</option>';
 			?>
 		</select>
@@ -37,7 +37,7 @@
 					}
 				}
 				
-				if($data['codeRole']=='A' ){
+				if($data['codeRole']=='AC' ){
 					if($data['civilite']=='M'){
 						echo "<td>Acteur</td>";
 					}else{
@@ -45,7 +45,7 @@
 					}
 				}
 				
-				if($data['codeRole']=='R' ){
+				if($data['codeRole']=='RE' ){
 					if($data['civilite']=='M'){
 						echo "<td>Réalisateur</td>";
 					}else{

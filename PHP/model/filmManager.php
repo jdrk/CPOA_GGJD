@@ -5,14 +5,14 @@ class filmManager extends Model{
 	{
 		if($genre=='Tout')
 		{
-			$rep=$this->executerRequete('SELECT * FROM AFFICHE A, FILM F WHERE A.numVisa=F.numVisa ORDER BY titreFilm');
+			$rep=$this->executerRequete('SELECT * FROM FILM F ORDER BY titreFilm');
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
 			return $all;
 		}
 		else
 		{
-			$rep=$this->executerRequete('SELECT * FROM AFFICHE A, FILM F, GENRE G WHERE A.numVisa=F.numVisa AND F.idGenre=G.idGenre AND libelleGenre=:genre',
+			$rep=$this->executerRequete('SELECT * FROM FILM F, GENRE G WHERE F.idGenre=G.idGenre AND libelleGenre=:genre',
 			array(':genre'=>$genre));
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
@@ -36,16 +36,8 @@ class filmManager extends Model{
 		return $det;
 	}
 	
-	public function getAffiche($numVisa){
-		$rep=$this->executerRequete('SELECT idAffiche FROM AFFICHE WHERE numVisa=:numVisa',
-		array(':numVisa'=>$numVisa));
-		$pic=$rep->fetch();
-		$rep->closeCursor();
-		return $pic;
-	}
-	
 	public function getCasting($numVisa) {
-		$rep=$this->executerRequete('SELECT * FROM ACTEUR A, VIP V, PROFIL P WHERE numVisa=:numVisa AND V.numVip=A.numVip AND V.numVip=P.numVip ',
+		$rep=$this->executerRequete('SELECT * FROM ACTEUR A, VIP V WHERE numVisa=:numVisa AND V.numVip=A.numVip',
 		array(':numVisa'=>$numVisa));
 		$casting=$rep->fetchAll();
 		$rep->closeCursor();
@@ -53,7 +45,7 @@ class filmManager extends Model{
 	}
 	
 	public function getProducer($numVisa) {
-		$rep=$this->executerRequete('SELECT * FROM REALISATEUR R, VIP V, PROFIL P WHERE numVisa=:numVisa AND V.numVip=R.numVip AND V.numVip=P.numVip ',
+		$rep=$this->executerRequete('SELECT * FROM REALISATEUR R, VIP V WHERE numVisa=:numVisa AND V.numVip=R.numVip',
 		array(':numVisa'=>$numVisa));
 		$producer=$rep->fetchAll();
 		$rep->closeCursor();

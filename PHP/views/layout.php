@@ -25,7 +25,7 @@
 		</div>
 		
 		<footer>
-			<p>VIP Story &copy; 2016 - Jackson DEROCK / Guillaume GEBAVI</p>
+			<p>Voicela &copy; 2016 - Jackson DEROCK / Guillaume GEBAVI</p>
 		</footer>
 
 	</body>

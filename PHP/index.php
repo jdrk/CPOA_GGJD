@@ -21,11 +21,11 @@
 				{
 					if($_POST['metier']=='Acteur')
 					{	
-						$_POST['metier']='A';
+						$_POST['metier']='AC';
 					}
 					if($_POST['metier']=='Réalisateur')
 					{	
-						$_POST['metier']='R';
+						$_POST['metier']='RE';
 					}
 					if($_POST['metier']=='Acteur et Réalisateur')
 					{	
@@ -54,20 +54,28 @@
 			}
 			include('views/vip.php');
 		}
-		
-		if($_GET['page']=='vip')
+		elseif($_GET['page']=='vip')
 		{	
 			$detail=new vipManager();
 			$data=$detail->getDetails($_GET['profil']);
-			$picture=new vipManager();
-			$pic=$picture->getProfil($_GET['profil']);
 			$affiche=new vipManager();
-			$req=$affiche->getPresent($_GET['profil']);
+			$req=$affiche->getPresentA($_GET['profil']);
 			$nbaff = count($req);
-			include('views/detailv.php');
+			$affiche2=new vipManager();
+			$req2=$affiche2->getPresentR($_GET['profil']);
+			$nbaff2 = count($req2);
+			
+			if(count($data)<2)
+			{
+				include('views/error.php');
+				header ("Refresh: 3;url=index.php"); 
+			}
+			else
+			{
+				include('views/detailv.php');
+			}
 		}
-		
-		if($_GET['page']=='listefilm')
+		elseif($_GET['page']=='listefilm')
 		{
 			$genre= new filmManager();
 			$req2=$genre->getGenre();
@@ -96,18 +104,27 @@
 			}
 			include('views/film.php');
 		}
-		
-		if($_GET['page']=='film')
+		elseif($_GET['page']=='film')
 		{	
 			$detail=new filmManager();
-			$data=$detail->getDetails($_GET['affiche']);
-			$picture=new filmManager();
-			$pic=$picture->getAffiche($_GET['affiche']);
+			$data=$detail->getDetails($_GET['visa']);
 			$casting=new filmManager();
-			$req=$casting->getCasting($_GET['affiche']);
+			$req=$casting->getCasting($_GET['visa']);
 			$producer=new filmManager();
-			$req2=$producer->getProducer($_GET['affiche']);
-			include('views/detailf.php');
+			$req2=$producer->getProducer($_GET['visa']);
+			if(count($data)<2)
+			{
+				include('views/error.php');
+			}
+			else
+			{
+				include('views/detailf.php');
+			}
+		}
+		else
+		{
+			include('views/error.php');
+			header ("Refresh: 10;url=index.php"); 
 		}
 	}
 	else

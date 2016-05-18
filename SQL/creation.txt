@@ -18,16 +18,9 @@ CREATE TABLE FILM
 	titreFilm VARCHAR(100) NOT NULL,
 	idGenre VARCHAR(2),
 	anneeSortie INT(4) NOT NULL,
+	idAffiche VARCHAR(10) DEFAULT "000000.jpg",
 	CONSTRAINT pk_film PRIMARY KEY(numVisa),
 	CONSTRAINT fk_genre FOREIGN KEY(idGenre) REFERENCES GENRE(idGenre)
-);
-
-CREATE TABLE AFFICHE
-(
-	numVisa VARCHAR(6),
-	idAffiche VARCHAR(10) DEFAULT "P00.jpg",
-	CONSTRAINT pk_affiche PRIMARY KEY(numVisa),
-	CONSTRAINT fk_affiche FOREIGN KEY(numVisa) REFERENCES FILM(numVisa)
 );
 
 CREATE TABLE VIP
@@ -41,16 +34,9 @@ CREATE TABLE VIP
 	codeRole VARCHAR(2) NOT NULL,
 	codeStatut VARCHAR(1) NOT NULL,
 	nationalite VARCHAR(30) NOT NULL,
+	idProfil VARCHAR(10) DEFAULT "P00.jpg",
 	CONSTRAINT pk_vip PRIMARY KEY(numVip),
 	CONSTRAINT fk_pays FOREIGN KEY(nationalite) REFERENCES PAYS(idNat)
-);
-
-CREATE TABLE PROFIL
-(
-	numVip VARCHAR(3),
-	idProfil VARCHAR(10) DEFAULT "P00.jpg",
-	CONSTRAINT pk_profil PRIMARY KEY(numVip),
-	CONSTRAINT fk_profil FOREIGN KEY(numVip) REFERENCES VIP(numVip)
 );
 
 CREATE TABLE PHOTOS
@@ -61,17 +47,6 @@ CREATE TABLE PHOTOS
 	lieuPhoto VARCHAR(20) NULL,
 	CONSTRAINT pk_photo PRIMARY KEY(numVip,idPhoto),
 	CONSTRAINT fk_photo FOREIGN KEY(numVip) REFERENCES VIP(numVip)
-);
-
-CREATE TABLE NEWEVENT
-(
-	numVip VARCHAR(3),
-	dateMariage DATE NOT NULL,
-	numVipConjoint VARCHAR(3) NOT NULL,
-	lieuMariage VARCHAR(20) NOT NULL,
-	dateDivorce DATE NULL,
-	CONSTRAINT pk_event PRIMARY KEY(numVip,dateMariage),
-	CONSTRAINT fk_event FOREIGN KEY(numVip) REFERENCES VIP(numVip)
 );
 
 CREATE TABLE REALISATEUR
@@ -90,6 +65,17 @@ CREATE TABLE ACTEUR
 	CONSTRAINT pk_acteur PRIMARY KEY(numVip,numVisa),
 	CONSTRAINT fk_acteur_vip FOREIGN KEY(numVip) REFERENCES VIP(numVip),
 	CONSTRAINT fk_acteur_visa FOREIGN KEY(numVisa) REFERENCES FILM(numVisa)
+);
+
+CREATE TABLE NEWEVENT
+(
+	numVip VARCHAR(3),
+	dateMariage DATE NOT NULL,
+	numVipConjoint VARCHAR(3) NOT NULL,
+	lieuMariage VARCHAR(20) NOT NULL,
+	dateDivorce DATE NULL,
+	CONSTRAINT pk_event PRIMARY KEY(numVip,dateMariage),
+	CONSTRAINT fk_event FOREIGN KEY(numVip) REFERENCES VIP(numVip)
 );
 
 CREATE TABLE OLDEVENT

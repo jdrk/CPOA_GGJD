@@ -10,7 +10,7 @@
 	?>
 	<table class="detailv">	
 		<tr>
-			<td rowspan="4"><img src="assets/img/vip/<?php echo $pic['idProfil'];?>" alt="<?php echo $pic['idProfil']; ?>"></td>
+			<td rowspan="4"><img src="assets/img/vip/<?php echo $data['idProfil'];?>" alt="<?php echo $data['idProfil']; ?>"></td>
 			<td><b><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></b> - <?php echo age($data['dateNaissance']);?> ans</td>
 		</tr>
 		
@@ -50,8 +50,8 @@
 		</tr>
 	</table>
 	
-	<?php if($nbaff!=0){
-	echo'<div id="joue">';
+	<?php if(isset($nbaff)&&$nbaff!=0){
+	echo'<div id="filmo">';
 	echo'<h1>Filmographie</h1>';
 		foreach($req as $aff){?>	
 			<a href="index.php?page=film&amp;affiche=<?php echo $aff['numVisa'];?>"><img src="assets/img/film/<?php echo $aff['idAffiche'];?>" alt="<?php echo $aff['numVisa'];?>"/></a>
@@ -59,10 +59,46 @@
 	echo'</div>';
 	} ?>
 	
-	<div id="conjoint">
-		<p>BLOC 2</p>
-	</div>
+	<?php if(isset($nbaff2)&&$nbaff2!=0){
+	echo'<div id="filmo">';
+	echo'<h1>Filmographie</h1>';
+		foreach($req2 as $aff2){?>	
+			<a href="index.php?page=film&amp;affiche=<?php echo $aff2['numVisa'];?>"><img src="assets/img/film/<?php echo $aff2['idAffiche'];?>" alt="<?php echo $aff2['numVisa'];?>"/></a>
+		<?php } 
+	echo'</div>';
+	} ?>
 	
+	<div id="statut">
+		<?php
+		if($data['codeStatut']=='D')
+		{
+			if($data['civilite']=='M')
+			{
+				echo'<h1>Divorcé</h1>';
+			}
+			else
+			{
+				echo'<h1>Divorcée</h1>';
+			}
+		}
+		else if($data['codeStatut']=='M')
+		{
+			if($data['civilite']=='M')
+			{
+				echo'<h1>Marié</h1>';
+			}
+			else
+			{
+				echo'<h1>Mariée</h1>';
+			}
+		}
+		else
+		{
+			echo'<h1>Célibataire</h1>';
+		}
+		?>
+	</div>
+
 <?php $content=ob_get_clean(); ?>
 <?php $title=$data['prenomVip'].' '.$data['nomVip']; $content; ?>
 <?php include("views/layout.php"); ?>

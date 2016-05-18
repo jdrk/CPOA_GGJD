@@ -1,11 +1,11 @@
 <?php $content=ob_start(); ?>
 	
 		<div id="detailf">
-			<p><img src="assets/img/film/<?php echo $pic['idAffiche'];?>" alt="<?php echo $pic['idAffiche'];?>"/></a></p>
+			<p><img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['idAffiche'];?>"/></a></p>
 			<p><b><?php echo $data['titreFilm']; ?></b></p>
 			<p>Sortie en <?php echo $data['anneeSortie']; ?></p>
 			<p><?php echo $data['libelleGenre']; ?></p>
-			<p>Visa d'exploitation n°<?php echo $data['numVisa']; ?></p>
+			<p>Visa d'exploitation <br/>n°<?php echo $data['numVisa']; ?></p>
 		</div>
 		
 		<div id="casting">
