@@ -5,6 +5,9 @@
  */
 package appli;
 
+import DA.DaoEvenement;
+import DA.DaoFilm;
+import DA.DaoNationalite;
 import DA.DaoVip;
 import DA.Source;
 import IHM.Connexion;
@@ -20,7 +23,10 @@ import javax.sql.DataSource;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import modele.ModeleFilm;
+import modele.ModeleNat;
 import modele.ModeleVip;
+import modele.ModeleVipEvent;
 
 /**
  *
@@ -29,6 +35,9 @@ import modele.ModeleVip;
 public class Appli {
     
     private static DaoVip daoVip;
+    private static DaoNationalite daoNationalite;
+    private static DaoFilm daoFilm;
+    private static DaoEvenement daoEvent;
     private static Connection connexion;
     private static DataSource source;
     
@@ -62,14 +71,22 @@ public class Appli {
         
         try{
             daoVip = new DaoVip(connexion);
+            daoNationalite = new DaoNationalite(connexion);
+            daoFilm = new DaoFilm(connexion);
+            daoEvent = new DaoEvenement(connexion);
             final ModeleVip modeleVip = new ModeleVip(daoVip);
+            final ModeleNat modeleNat = new ModeleNat(daoNationalite);
+            final ModeleFilm modeleFilm = new ModeleFilm(daoFilm);
+            final ModeleVipEvent modeleVipEvent = new ModeleVipEvent(daoVip,daoEvent);
 
             /* Create and display the form */
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     try {
-                        new MainScreen(modeleVip, Source.getUserName()).setVisible(true);
+                        new MainScreen(modeleVip, Source.getUserName(), modeleNat, modeleFilm, modeleVipEvent, daoEvent, daoVip).setVisible(true);
                     } catch (IOException ex) {
+                        Logger.getLogger(Appli.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (SQLException ex) {
                         Logger.getLogger(Appli.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     

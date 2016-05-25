@@ -20,8 +20,9 @@ public class Vip {
     private String codeRole;
     private String codeStatut;
     private String nationalite;
+    private String idPhoto;
 
-    public Vip(String numVip, String nomVip, String prenomVip, String civilite, String dateNaissance, String lieuNaissance, String codeRole, String codeStatut, String nationalite) {
+    public Vip(String numVip, String nomVip, String prenomVip, String civilite, String dateNaissance, String lieuNaissance, String codeRole, String codeStatut, String nationalite, String idPhoto) {
         this.numVip = numVip;
         this.nomVip = nomVip;
         this.prenomVip = prenomVip;
@@ -31,6 +32,7 @@ public class Vip {
         this.codeRole = codeRole;
         this.codeStatut = codeStatut;
         this.nationalite = nationalite;
+        this.idPhoto = idPhoto;
     }
 
     public String getNumVip() {
@@ -105,9 +107,19 @@ public class Vip {
         this.nationalite = nationalite;
     }
 
+    public String getIdPhoto() {
+        return idPhoto;
+    }
+
+    public void setIdPhoto(String idPhoto) {
+        this.idPhoto = idPhoto;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Vip{" + "numVip=" + numVip + ", nomVip=" + nomVip + ", prenomVip=" + prenomVip + ", civilite=" + civilite + ", dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance + ", codeRole=" + codeRole + ", codeStatut=" + codeStatut + ", nationalite=" + nationalite + '}';
+        return "Vip{" + "numVip=" + numVip + ", nomVip=" + nomVip + ", prenomVip=" + prenomVip + ", civilite=" + civilite + ", dateNaissance=" + dateNaissance + ", lieuNaissance=" + lieuNaissance + ", codeRole=" + codeRole + ", codeStatut=" + codeStatut + ", nationalite=" + nationalite + '}' ;
     }
     
     

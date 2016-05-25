@@ -21,10 +21,11 @@ public class ModeleVip extends AbstractTableModel {
     private ArrayList<Vip> listeVip;
     private String[] titre;
     private DaoVip objetDaoVip;
+    private String lastName;
     
     public ModeleVip(DaoVip objetDaoVip){
         this.listeVip = new ArrayList<>();
-        this.titre = new String[]{"Numéro VIP", "Nom","Prénom", "Civilité", "Date de naissance","Lieu de naissance","Rôle","Statut marital","Nationalité"};
+        this.titre = new String[]{"Numéro VIP", "Nom","Prénom", "Civilité", "Date de naissance","Lieu de naissance","Rôle","Statut marital","Nationalité","Photo"};
         this.objetDaoVip = objetDaoVip;
     }
     
@@ -50,7 +51,9 @@ public class ModeleVip extends AbstractTableModel {
             case 5 : return vip.getLieuNaissance();
             case 6 : return vip.getCodeRole();
             case 7 : return vip.getCodeStatut();
-            default : return vip.getNationalite();
+            case 8 : return vip.getNationalite();
+            case 9 : return vip.getIdPhoto();
+            default : return null;
         }
         
         
@@ -69,23 +72,40 @@ public class ModeleVip extends AbstractTableModel {
     
     public void delVip(int ligne)  throws SQLException{
         String numVip = (String) getValueAt(ligne, 0);
-        System.out.println(numVip + "     test 1");
         int numVip1 = Integer.parseInt(numVip);
-        System.out.println(numVip1 + "     test 2");
         objetDaoVip.delVip(numVip);
         listeVip.remove(ligne);
         this.fireTableDataChanged();
     }
     
-    public void loadVip() throws SQLException{
-        objetDaoVip.lireVip(listeVip);
+    public String loadVip() throws SQLException{
+        String lastNum = objetDaoVip.lireVip(listeVip);
         this.fireTableDataChanged();
+        return lastNum;
         
     }
+    
+    
     
     public void refreshVip(){
         this.fireTableDataChanged();
     }
+    
+    public void modifyVip(int index, String newNumVip, String nomVip, String prenomVip, String civiliteVip, String dateN, String lieuN, String codeR, String codeS, String nat) throws SQLException{
+        Vip temp = this.getSelectedVip(index);
+            
+        objetDaoVip.modifyVip(temp.getNumVip(), newNumVip, nomVip, prenomVip, civiliteVip, dateN, lieuN, codeR, codeS, nat);
+        listeVip.set(index, new Vip(newNumVip, nomVip, prenomVip, civiliteVip, dateN, lieuN, codeR, codeS, nat, temp.getIdPhoto()));
+        this.fireTableDataChanged();
+        
+    }
+    
+    public Vip getSelectedVip(int ligne){
+        return listeVip.get(ligne);
+    }
+    
+    
+    
     
     
     

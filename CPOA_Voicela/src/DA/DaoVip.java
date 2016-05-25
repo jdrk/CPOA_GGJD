@@ -19,17 +19,19 @@ import metier.Vip;
 public class DaoVip {
     
     private final Connection connexion;
+    private static String numVip; // utilisé pour transmettre le dernier numéroVip
     
     public DaoVip(Connection connexion) throws SQLException{
         this.connexion = connexion;
     }
     
-    public void lireVip(ArrayList<Vip> lesVip) throws SQLException{
+    public String lireVip(ArrayList<Vip> lesVip) throws SQLException{ //lis les VIP depuis la base et retourne le dernier numVip récupéré
         String requete = "SELECT * FROM VIP";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         ResultSet rset = pstmt.executeQuery(requete);
+        Vip temp;
         while (rset.next()) {
-            String num = rset.getString(1);
+            numVip = rset.getString(1);
             String nom = rset.getString(2);
             String prenom = rset.getString(3);
             String civilite = rset.getString(4);
@@ -38,16 +40,64 @@ public class DaoVip {
             String codeRole = rset.getString(7);
             String codeStatut = rset.getString(8);
             String nationalite = rset.getString(9);
-            Vip temp = new Vip(num,nom,prenom,civilite,dateNaissance,lieuNaissance,codeRole,codeStatut,nationalite);
+            String idPhoto = rset.getString(10);
+            temp = new Vip(numVip,nom,prenom,civilite,dateNaissance,lieuNaissance,codeRole,codeStatut,nationalite, idPhoto);
             lesVip.add(temp);
         }
-        rset.close();
-        pstmt.close();        
+        
       
+          
+        rset.close();
+        pstmt.close();       
+        
+        return numVip;
+      
+    }
+    // à modifier 
+    public void lireNomVip(ArrayList<Vip> lesVip) throws SQLException{
+        String requete = "SELECT numVip, nomVip, prenomVip FROM VIP";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        ResultSet rset = pstmt.executeQuery(requete);
+        Vip temp;
+        while (rset.next()) {
+            String numVip = rset.getString(1);
+            String nom = rset.getString(2);
+            String prenom = rset.getString(3);
+            String civilite = rset.getString(4);
+            String dateNaissance = rset.getString(5);
+            String lieuNaissance = rset.getString(6);
+            String codeRole = rset.getString(7);
+            String codeStatut = rset.getString(8);
+            String nationalite = rset.getString(9);
+            String idPhoto = rset.getString(10);
+            temp = new Vip(numVip,nom,prenom,civilite,dateNaissance,lieuNaissance,codeRole,codeStatut,nationalite, idPhoto);
+            lesVip.add(temp);
+        }
+        
+      
+          
+        rset.close();
+        pstmt.close();       
+        
+        
+    }
+    
+    public Object getStatut(String numVip) throws SQLException{
+        String requete = "SELECT codestatut FROM VIP where NUMVIP="+numVip;
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        ResultSet rset = pstmt.executeQuery(requete);
+        String codeS = new String();
+        while (rset.next()) {
+            codeS = rset.getString(8);
+        }
+
+        rset.close();
+        pstmt.close();   
+        return codeS;
     }
     
     public void addVip(Vip vip) throws SQLException{
-        String requete = "INSERT INTO VIP VALUES(?,?,?,?,?,?,?,?,'FR')";
+        String requete = "INSERT INTO VIP VALUES(?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstmt = connexion.prepareStatement(requete);
         pstmt.setString(1, vip.getNumVip());
         pstmt.setString(2, vip.getNomVip());
@@ -56,14 +106,10 @@ public class DaoVip {
         pstmt.setString(5, vip.getDateNaissance());
         pstmt.setString(6, vip.getLieuNaissance());
         pstmt.setString(7, vip.getCodeRole());
-        pstmt.setString(8, vip.getCodeStatut());
-        //pstmt.setString(9, vip.getNationalite());
-        String photoAdd = "INSERT INTO PHOTOS VALUES(?, 'P00.jpg',null,null)";
-        PreparedStatement pstmt2 = connexion.prepareStatement(photoAdd);
-        pstmt2.setString(1, vip.getNumVip());
-        pstmt2.executeUpdate();
+        pstmt.setString(8, "C"); //pstmt.setString(8, vip.getCodeStatut());
+        pstmt.setString(9, vip.getNationalite());
+        pstmt.setString(10, vip.getIdPhoto());
         pstmt.executeUpdate();
-        pstmt2.close();
         pstmt.close();
       
     }
@@ -76,8 +122,21 @@ public class DaoVip {
         pstmt.close();
     }
 
-    public void delVip(int numVip) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modifyVip(String numVipOld, String numVip, String nomVip, String prenomVip, String civilite, String dateN, String lieuN, String codeR, String codeS, String nat) throws SQLException{
+        String requete = "UPDATE VIP SET numVip=?,nomVip=?, prenomVip=?, civilite=?, dateNaissance=?, lieuNaissance=?, codeRole=?, codeStatut=?,nationalite=? WHERE numVip=?";
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+        pstmt.setString(1, numVip);
+        pstmt.setString(2, nomVip);
+        pstmt.setString(3, prenomVip);
+        pstmt.setString(4, civilite);
+        pstmt.setString(5, dateN);
+        pstmt.setString(6, lieuN);
+        pstmt.setString(7, codeR);
+        pstmt.setString(8, codeS);
+        pstmt.setString(9, nat);
+        pstmt.setString(10, numVipOld);
+        pstmt.executeUpdate();
+        pstmt.close();
+        
     }
-    
 }
