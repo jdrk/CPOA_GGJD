@@ -1,13 +1,15 @@
 <?php
-	
+
 	require_once('model/model.php');
 	require_once('model/vipManager.php');
 	require_once('model/filmManager.php');
 	
 	if(isset($_GET['page']))	
 	{
+		//Si page=listevip
 		if($_GET['page']=='listevip')
 		{
+			$selection2='selection';
 			if(isset($_POST['metier']))
 			{
 				$obj=new vipManager();
@@ -54,8 +56,10 @@
 			}
 			include('views/vip.php');
 		}
+		//si page=vip
 		elseif($_GET['page']=='vip')
 		{	
+			$selection2='selection';
 			$detail=new vipManager();
 			$data=$detail->getDetails($_GET['profil']);
 			$affiche=new vipManager();
@@ -64,19 +68,35 @@
 			$affiche2=new vipManager();
 			$req2=$affiche2->getPresentR($_GET['profil']);
 			$nbaff2 = count($req2);
-			
+			$photo=new vipManager();
+			$pic=$photo->getPhoto($_GET['profil']);
+			$nbaff3 = count($pic);
+			$evenement=new vipManager();
+			$event=$evenement->getEvent($_GET['profil']);
+			if($event['numVip']==$_GET['profil'])
+			{
+				$cj=$event['numVipConjoint'];
+				$cnj=$detail->getDetails($cj);
+			}
+			else
+			{
+				$cj=$event['numVip'];
+				$cnj=$detail->getDetails($cj);
+			}
 			if(count($data)<2)
 			{
 				include('views/error.php');
-				header ("Refresh: 3;url=index.php"); 
+				header ("Refresh: 8;url=index.php"); 
 			}
 			else
 			{
 				include('views/detailv.php');
 			}
 		}
+		//si page=listefilm
 		elseif($_GET['page']=='listefilm')
 		{
+			$selection3='selection';
 			$genre= new filmManager();
 			$req2=$genre->getGenre();
 			
@@ -104,31 +124,36 @@
 			}
 			include('views/film.php');
 		}
+		//si page=film
 		elseif($_GET['page']=='film')
 		{	
+			$selection3='selection';
 			$detail=new filmManager();
 			$data=$detail->getDetails($_GET['visa']);
 			$casting=new filmManager();
 			$req=$casting->getCasting($_GET['visa']);
-			$producer=new filmManager();
-			$req2=$producer->getProducer($_GET['visa']);
+			$prod=new filmManager();
+			$producer=$prod->getProducer($_GET['visa']);
 			if(count($data)<2)
 			{
 				include('views/error.php');
+				header ("Refresh: 8;url=index.php"); 
 			}
 			else
 			{
 				include('views/detailf.php');
 			}
 		}
+		//sinon renvoie la page d'erreur
 		else
 		{
 			include('views/error.php');
-			header ("Refresh: 10;url=index.php"); 
+			header ("Refresh: 8;url=index.php"); 
 		}
 	}
 	else
 	{
+		$selection1='selection';
 		include("views/scoop.php");
 	}
 	

@@ -31,7 +31,7 @@
 				}
 			}
 			
-			if($data['codeRole']=='A' ){
+			if($data['codeRole']=='AC' ){
 				if($data['civilite']=='M'){
 					echo "<td>Acteur</td>";
 				}else{
@@ -39,7 +39,7 @@
 				}
 			}
 			
-			if($data['codeRole']=='R' ){
+			if($data['codeRole']=='RE' ){
 				if($data['civilite']=='M'){
 					echo "<td>Réalisateur</td>";
 				}else{
@@ -52,18 +52,18 @@
 	
 	<?php if(isset($nbaff)&&$nbaff!=0){
 	echo'<div id="filmo">';
-	echo'<h1>Filmographie</h1>';
+	echo'<h1><i class="fa fa-film" aria-hidden="true"></i> Filmographie</h1>';
 		foreach($req as $aff){?>	
-			<a href="index.php?page=film&amp;affiche=<?php echo $aff['numVisa'];?>"><img src="assets/img/film/<?php echo $aff['idAffiche'];?>" alt="<?php echo $aff['numVisa'];?>"/></a>
+			<a href="index.php?page=film&amp;visa=<?php echo $aff['numVisa'];?>"><img src="assets/img/film/<?php echo $aff['idAffiche'];?>" alt="<?php echo $aff['numVisa'];?>"/></a>
 		<?php } 
 	echo'</div>';
 	} ?>
 	
 	<?php if(isset($nbaff2)&&$nbaff2!=0){
 	echo'<div id="filmo">';
-	echo'<h1>Filmographie</h1>';
+	echo'<h1><i class="fa fa-film" aria-hidden="true"></i> Filmographie</h1>';
 		foreach($req2 as $aff2){?>	
-			<a href="index.php?page=film&amp;affiche=<?php echo $aff2['numVisa'];?>"><img src="assets/img/film/<?php echo $aff2['idAffiche'];?>" alt="<?php echo $aff2['numVisa'];?>"/></a>
+			<a href="index.php?page=film&amp;visa=<?php echo $aff2['numVisa'];?>"><img src="assets/img/film/<?php echo $aff2['idAffiche'];?>" alt="<?php echo $aff2['numVisa'];?>"/></a>
 		<?php } 
 	echo'</div>';
 	} ?>
@@ -74,30 +74,44 @@
 		{
 			if($data['civilite']=='M')
 			{
-				echo'<h1>Divorcé</h1>';
+				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Divorcé</h1>';
 			}
 			else
 			{
-				echo'<h1>Divorcée</h1>';
+				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Divorcée</h1>';
 			}
 		}
 		else if($data['codeStatut']=='M')
 		{
 			if($data['civilite']=='M')
 			{
-				echo'<h1>Marié</h1>';
+				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Marié à</h1>';
 			}
 			else
 			{
-				echo'<h1>Mariée</h1>';
+				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Mariée à</h1>';
 			}
 		}
 		else
 		{
-			echo'<h1>Célibataire</h1>';
+			echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Célibataire</h1>';
 		}
-		?>
+		if($cnj['codeStatut']=='M')
+		{ ?>
+		<div class="vipF">
+				<p><a href="index.php?page=vip&amp;profil=<?php echo $cnj['numVip'];?>" ><img src="assets/img/vip/<?php echo $cnj['idProfil'];?>" alt="<?php echo $cnj['nomVip'];?>"/></a></p>
+				<p><b><a href="index.php?page=vip&amp;profil=<?php echo $cnj['numVip'];?>" ><?php echo $cnj['prenomVip'];?> <?php echo $cnj['nomVip'];?></a></b></p>
+		</div>
+		<?php } ?>
 	</div>
+	<?php if(isset($nbaff3)&&$nbaff3!=0){?>
+	<div id="photo">
+		<h1><i class="fa fa-camera" aria-hidden="true"></i> Galeries</h1>
+		<?php foreach($pic as $picture){?>	
+			<img src="assets/img/photo/<?php echo $picture['idPhoto'];?>" alt="<?php echo $picture['idPhoto'];?>"/>
+		<?php } ?>
+	</div>
+	<?php } ?>
 
 <?php $content=ob_get_clean(); ?>
 <?php $title=$data['prenomVip'].' '.$data['nomVip']; $content; ?>

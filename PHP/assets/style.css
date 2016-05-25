@@ -51,6 +51,10 @@ nav ul li a:hover{
 	transition: 1s;
 }
 
+.selection{
+	color: gold;
+}
+
 /*début tableau liste vip de vip.php*/
 
 #form{
@@ -131,38 +135,41 @@ button{
 	width: 150px;
 }
 
-#blocFC{
-	width: 100%;
+#filmo h1, #statut h1, #photo  h1{
+	font-size: 15pt;
 }
 
 #filmo{
 	background-color: white;
 	float: left;
 	width: 30%;
+	padding: 0px 15px 15px 15px;
 	margin-bottom: 35px;
-	padding: 0 15px 15px 15px;
 }
 
 #filmo img{
 	width: 75px;
 }
 
-#filmo h1{
-	font-size: 15pt;
-}
-
 #statut{
 	background-color: white;
-	float: left;
+	float: right;
 	width: 62%;
-	float : right;
-	padding: 0 15px 15px 15px;
-
+	padding: 0 15px;
 }
 
-#statut h1{
-	font-size: 15pt;
+#photo{
+	background-color: white;
+	width: 62%;
+	padding: 0px 15px 15px 15px;
+	margin: 10px 0px 35px 0px;
+	float: right;
 }
+
+#photo img{
+	width: 250px;
+}
+
 
 /*fin tableau detail vip de detailv.php*/
 

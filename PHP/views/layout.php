@@ -14,9 +14,9 @@
 		<header>Voicela</header>
 			<nav>
 				<ul>
-					<li><a href="index.php"><i class="fa fa-bolt" aria-hidden="true"></i> SCOOP</a></li>
-					<li><a href="index.php?page=listevip"><i class="fa fa-star-o" aria-hidden="true"></i> VIP</a></li>
-					<li><a href="index.php?page=listefilm"><i class="fa fa-film" aria-hidden="true"></i> FILMS</a></li>
+					<li><a class="<?php if(isset($selection1))echo $selection1;?>" href="index.php"><i class="fa fa-bolt" aria-hidden="true"></i> SCOOP</a></li>
+					<li><a class="<?php if(isset($selection2))echo $selection2;?>" href="index.php?page=listevip"><i class="fa fa-star-o" aria-hidden="true"></i> VIP</a></li>
+					<li><a class="<?php if(isset($selection3))echo $selection3;?>" href="index.php?page=listefilm"><i class="fa fa-film" aria-hidden="true"></i> FILMS</a></li>
 				</ul>
 			</nav>
 			
@@ -25,7 +25,7 @@
 		</div>
 		
 		<footer>
-			<p>Voicela &copy; 2016 - Jackson DEROCK / Guillaume GEBAVI</p>
+			<p>Voicela &copy; 2016 &mdash; Jackson DEROCK &bull; Guillaume GEBAVI</p>
 		</footer>
 
 	</body>

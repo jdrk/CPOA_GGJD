@@ -16,9 +16,13 @@
 	
 	<div id="bloc">
 	<?php
-	if($nbPic==0)
+	if($nbPic==0 && isset($libelle))
 	{
 		echo'<p class="compteur">Aucun film de genre "'.$libelle.'" trouvé</p>';
+	}
+	elseif($nbPic==1)
+	{
+		echo'<p class="compteur">'.$nbPic.' FILM DISPONIBLE'.'</p>';
 	}
 	else
 	{
@@ -26,7 +30,7 @@
 	}
 	foreach($req as $data)
 	{?>
-		<a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>"><img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['idAffiche'];?>"/></a>
+		<a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>"><img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></a>
 	<?php } ?>
 	</div>
 

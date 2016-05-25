@@ -53,7 +53,7 @@ class vipManager extends Model{
 			return $all;
 		}
 	}
-	
+
 	public function getDetails($numVip){
 		$rep=$this->executerRequete('SELECT * FROM VIP V, NATIONALITE N WHERE numVip=:numVip AND V.nationalite=N.idNat;',
 		array(':numVip'=>$numVip));
@@ -77,5 +77,23 @@ class vipManager extends Model{
 		$rep->closeCursor();
 		return $aff;
 	}
+	
+	public function getPhoto($numVip){
+		$rep=$this->executerRequete('SELECT * FROM PHOTO WHERE numVip=:numVip',
+		array(':numVip'=>$numVip));
+		$aff=$rep->fetchAll();
+		$rep->closeCursor();
+		return $aff;
+	}
+	
+	public function getEvent($numVip){
+		$rep=$this->executerRequete('SELECT * FROM NEWEVENT N, VIP V WHERE (N.numVip=:numVip OR N.numVipConjoint=:numVip) AND V.numVip=N.numVip ',
+		array(':numVip'=>$numVip));
+		$aff=$rep->fetch();
+		$rep->closeCursor();
+		return $aff;
+	}
+	
+	
 }
 ?>

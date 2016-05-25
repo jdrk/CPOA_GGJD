@@ -47,7 +47,7 @@ class filmManager extends Model{
 	public function getProducer($numVisa) {
 		$rep=$this->executerRequete('SELECT * FROM REALISATEUR R, VIP V WHERE numVisa=:numVisa AND V.numVip=R.numVip',
 		array(':numVisa'=>$numVisa));
-		$producer=$rep->fetchAll();
+		$producer=$rep->fetch();
 		$rep->closeCursor();
 		return $producer;
 	}

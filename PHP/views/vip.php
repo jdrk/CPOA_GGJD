@@ -24,8 +24,8 @@
 	{?>
 	<table class=vip>
 		<tr>
-			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>"><img src="assets/img/vip/<?php echo $data['idProfil'];?>" alt="<?php echo $data['idProfil'];?>"/></a></td>
-			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>"><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></a></td>
+			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>" ><img src="assets/img/vip/<?php echo $data['idProfil'];?>" alt="<?php echo $data['nomVip'];?>"/></a></td>
+			<td><a href="index.php?page=vip&amp;profil=<?php echo $data['numVip'];?>" ><?php echo $data['prenomVip'];?> <?php echo $data['nomVip'];?></a></td>
 			<td><?php echo age($data['dateNaissance']);?> ans</td>
 			
 				<?php 
