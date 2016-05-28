@@ -1,0 +1,63 @@
+checkNewMariage BEFORE INSERT
+BEGIN
+	
+	DECLARE codeS1 VARCHAR(1);
+	DECLARE codeS2 VARCHAR(1);
+	DECLARE dateD DATE;
+	DECLARE StatutM_e CONDITION FOR SQLSTATE '45001';
+	DECLARE VipIdentique_e CONDITION FOR SQLSTATE '45002';
+	DECLARE dateDivorceInsert_e CONDITION FOR SQLSTATE '45004';
+
+	SELECT codeStatut INTO codeS1
+	FROM VIP
+	WHERE numVip=NEW.numVip;
+	
+	SELECT codeStatut INTO codeS2
+	FROM VIP
+	WHERE numVip=NEW.numVipConjoint;
+
+	SELECT MAX(dateDivorce) INTO dateD
+	FROM NEWEVENT
+	WHERE numVip=NEW.numVip;
+
+	IF(NEW.numVip=NEW.numVipConjoint) THEN
+		CALL VipIdentique_e;
+	END IF;
+       
+    IF(codeS1='M' OR codeS2='M') THEN
+       CALL verifStatutM_e;
+    END IF;
+
+    IF(dateD>NEW.dateMariage) THEN
+       CALL dateDivorceInsert_e;
+    END IF;
+
+END
+
+changeStatutM AFTER INSERT
+BEGIN
+	UPDATE VIP SET codeStatut='M' WHERE numVip=NEW.numVip;
+	UPDATE VIP SET codeStatut='M' WHERE numVip=NEW.numVipConjoint;
+END
+
+checkNewDivorce BEFORE UPDATE
+BEGIN
+	DECLARE dateDivorce_e CONDITION FOR SQLSTATE '45004';
+	DECLARE dateM DATE;
+
+	SELECT dateMariage INTO dateM
+	FROM NEWEVENT 
+	WHERE numVip=NEW.numVip AND dateDivorce='0000-00-00';
+
+	IF(dateM>=NEW.dateDivorce) THEN
+		CALL dateDivorce_e;
+	END IF;
+END
+
+changeStatutD AFTER UPDATE
+BEGIN
+	UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVip;
+	UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVipConjoint;
+END
+
+
