@@ -1,12 +1,18 @@
+##################################################################################################
 checkNewMariage BEFORE INSERT
+"			"			"			"
+-vérifie que le codeStatut du numVip et celui de numVipConjoint est différent de M [statutM_e]
+-vérifie que le numVip et le numVipConjoint sont différents [vipIdentique_e]
+-vérifie que la (nouvelle) dateMariage est plus grande que la dernière dateDivorce, 1000-01-01 par défaut [dateDivorceI_e]
+"			"			"			"
 BEGIN
 	
 	DECLARE codeS1 VARCHAR(1);
 	DECLARE codeS2 VARCHAR(1);
 	DECLARE dateD DATE;
-	DECLARE StatutM_e CONDITION FOR SQLSTATE '45001';
-	DECLARE VipIdentique_e CONDITION FOR SQLSTATE '45002';
-	DECLARE dateDivorceInsert_e CONDITION FOR SQLSTATE '45004';
+	DECLARE statutM_e CONDITION FOR SQLSTATE '45001';
+	DECLARE vipIdentique_e CONDITION FOR SQLSTATE '45002';
+	DECLARE dateDivorceI_e CONDITION FOR SQLSTATE '45003';
 
 	SELECT codeStatut INTO codeS1
 	FROM VIP
@@ -21,43 +27,74 @@ BEGIN
 	WHERE numVip=NEW.numVip;
 
 	IF(NEW.numVip=NEW.numVipConjoint) THEN
-		CALL VipIdentique_e;
+		CALL vipIdentique_e;
 	END IF;
        
     IF(codeS1='M' OR codeS2='M') THEN
-       CALL verifStatutM_e;
+       CALL statutM_e;
     END IF;
 
     IF(dateD>NEW.dateMariage) THEN
-       CALL dateDivorceInsert_e;
+       CALL dateDivorceI_e;
     END IF;
 
 END
-
+##################################################################################################
 changeStatutM AFTER INSERT
+"			"			"			"
+-MAJ du codeStatut du numVip et celui du numVipConjoint à M
+"			"			"			"
 BEGIN
 	UPDATE VIP SET codeStatut='M' WHERE numVip=NEW.numVip;
 	UPDATE VIP SET codeStatut='M' WHERE numVip=NEW.numVipConjoint;
 END
-
+##################################################################################################
 checkNewDivorce BEFORE UPDATE
+"			"			"			"
+-vérifie que la (nouvelle) dateDivorce est supérieur à celle de la (dernière) dateMariage [dateDivorceU_e]
+"			"			"			"
 BEGIN
-	DECLARE dateDivorce_e CONDITION FOR SQLSTATE '45004';
+	DECLARE dateDivorceU_e CONDITION FOR SQLSTATE '45004';
 	DECLARE dateM DATE;
 
 	SELECT dateMariage INTO dateM
 	FROM NEWEVENT 
-	WHERE numVip=NEW.numVip AND dateDivorce='0000-00-00';
+	WHERE numVip=NEW.numVip AND dateDivorce='1000-01-01';
 
 	IF(dateM>=NEW.dateDivorce) THEN
-		CALL dateDivorce_e;
+		CALL dateDivorceU_e;
 	END IF;
 END
-
+##################################################################################################
 changeStatutD AFTER UPDATE
+"			"			"			"
+-MAJ du codeStatut du numVip et celui du numVipConjoint à D
+"			"			"			"
 BEGIN
 	UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVip;
 	UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVipConjoint;
 END
+##################################################################################################
+Scénario mariage/divorce successif avec les mêmes VIP
+DELETE FROM NEWEVENT WHERE numVip='051';
+UPDATE VIP SET codeStatut='C' WHERE numVip='051' OR numVip='052';
+INSERT INTO NEWEVENT VALUES('051','2014-05-28','052','Lyon','1000-01-01');
+UPDATE NEWEVENT SET dateDivorce='2017-01-01' WHERE numVip='051' AND dateDivorce='1000-01-01';
+INSERT INTO NEWEVENT VALUES('051','2020-05-28','052','Paris','1000-01-01');
+UPDATE NEWEVENT SET dateDivorce='2020-12-01' WHERE numVip='051' AND dateDivorce='1000-01-01';
+INSERT INTO NEWEVENT VALUES('051','2050-02-14','052','Marseille','1000-01-01');
 
+Scénario numVipIdentique
+INSERT INTO NEWEVENT VALUES('051','2014-05-28','051','Lyon','1000-01-01');
 
+Scénario numVip et/ou numVipConjoint déjà marié
+INSERT INTO NEWEVENT VALUES('049','2014-05-28','050','Lyon','1000-01-01');
+
+Scénario dateMariage < dernière dateDivorce
+INSERT INTO NEWEVENT VALUES('051','2019-05-28','052','Paris','1000-01-01');
+
+Scénario dateDivorce < dateMariage
+UPDATE NEWEVENT SET dateDivorce='2020-12-01' WHERE numVip='051' AND dateDivorce='1000-01-01';
+##################################################################################################
+Limite des triggers
+Impossible d'ajouter un mariage antérieur à la dernière date de divorce
