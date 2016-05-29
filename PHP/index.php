@@ -73,6 +73,11 @@
 			$nbaff3 = count($pic);
 			$evenement=new vipManager();
 			$event=$evenement->getEvent($_GET['profil']);
+			
+			$recapitulatif=new vipManager();
+			$recap=$recapitulatif->getRecap($_GET['profil']);
+			$nbaff4=count($recap);
+			
 			if($event['numVip']==$_GET['profil'])
 			{
 				$cj=$event['numVipConjoint'];
@@ -83,6 +88,7 @@
 				$cj=$event['numVip'];
 				$cnj=$detail->getDetails($cj);
 			}
+			
 			if(count($data)<2)
 			{
 				include('views/error.php');

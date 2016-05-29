@@ -87,12 +87,21 @@ class vipManager extends Model{
 	}
 	
 	public function getEvent($numVip){
-		$rep=$this->executerRequete('SELECT * FROM NEWEVENT N, VIP V WHERE (N.numVip=:numVip OR N.numVipConjoint=:numVip) AND V.numVip=N.numVip ',
+		$rep=$this->executerRequete('SELECT * FROM NEWEVENT N, VIP V WHERE (N.numVip=:numVip OR N.numVipConjoint=:numVip) AND V.numVip=N.numVip AND dateDivorce="1000-01-01" ORDER BY dateMariage DESC',
 		array(':numVip'=>$numVip));
 		$aff=$rep->fetch();
 		$rep->closeCursor();
 		return $aff;
 	}
+	
+	public function getRecap($numVip){
+		$rep=$this->executerRequete('SELECT * FROM NEWEVENT N, VIP V WHERE N.numVipConjoint=:numVip AND N.numVip=V.numVip AND dateDivorce!="1000-01-01" UNION ALL SELECT * FROM NEWEVENT N2, VIP V2 WHERE N2.numVip=:numVip AND N2.numVipConjoint=V2.numVip AND dateDivorce!="1000-01-01" ORDER BY dateMariage DESC;',
+		array(':numVip'=>$numVip));
+		$aff=$rep->fetchAll();
+		$rep->closeCursor();
+		return $aff;
+	}
+
 	
 	
 }

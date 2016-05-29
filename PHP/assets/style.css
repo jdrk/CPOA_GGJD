@@ -156,13 +156,25 @@ button{
 	float: right;
 	width: 62%;
 	padding: 0 15px;
+	margin-bottom: 10px;
+}
+
+#statut a{
+	text-decoration:none;
+	color: black;
+	font-weight:bold;
+}
+
+#statut a:hover{
+	color: #4F1A5C;
+	transition: 1s;
 }
 
 #photo{
 	background-color: white;
 	width: 62%;
 	padding: 0px 15px 15px 15px;
-	margin: 10px 0px 35px 0px;
+	margin: 0px 0px 35px 0px;
 	float: right;
 }
 
@@ -220,14 +232,23 @@ button{
 	width: 150px;
 }
 
-.vipF a{
+.vipF, .vipM a{
 	text-decoration: none;
 	color: black;
 }
 
-.vipF a:hover{
+.vipF, .vipM  a:hover{
 	color: #4F1A5C;
 	transition:1s;
+}
+
+.vipM{
+	width: 300px;
+	padding: 0px 10px
+}
+
+.vipM img{
+	width: 100px;
 }
 
 /*fin detailf*/

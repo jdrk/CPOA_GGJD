@@ -1,13 +1,9 @@
 <?php $content=ob_start();?>
 
 <?php require_once("functions/age.php");?>
+<?php require_once("functions/date.php");?>
 
-	<?php if(isset($data)){
-		//formatage de la date :
-		$date=$data['dateNaissance'];
-		setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
-		$birth = strftime("%d %B %Y",strtotime($date));
-	?>
+	<?php if(isset($data)){?>
 	<table class="detailv">	
 		<tr>
 			<td rowspan="4"><img src="assets/img/vip/<?php echo $data['idProfil'];?>" alt="<?php echo $data['idProfil']; ?>"></td>
@@ -16,7 +12,7 @@
 		
 		<tr>
 			<td><?php 
-			if($data['civilite']=='M'){echo "Né le ";}else{echo "Née le ";} echo $birth?> (<?php echo $data['lieuNaissance'];?>)</td>
+			if($data['civilite']=='M'){echo "Né le ";}else{echo "Née le ";} echo datef($data['dateNaissance']);?> (<?php echo $data['lieuNaissance'];?>)</td>
 		</tr>
 		<tr>
 			<td>Nationalité <?php echo $data['nomNat'];?></td>
@@ -85,11 +81,11 @@
 		{
 			if($data['civilite']=='M')
 			{
-				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Marié à</h1>';
+				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Marié</h1>';
 			}
 			else
 			{
-				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Mariée à</h1>';
+				echo'<h1><i class="fa fa-gratipay" aria-hidden="true"></i> Mariée</h1>';
 			}
 		}
 		else
@@ -98,12 +94,25 @@
 		}
 		if($cnj['codeStatut']=='M')
 		{ ?>
-		<div class="vipF">
+		<div class="vipM">
+
 				<p><a href="index.php?page=vip&amp;profil=<?php echo $cnj['numVip'];?>" ><img src="assets/img/vip/<?php echo $cnj['idProfil'];?>" alt="<?php echo $cnj['nomVip'];?>"/></a></p>
 				<p><b><a href="index.php?page=vip&amp;profil=<?php echo $cnj['numVip'];?>" ><?php echo $cnj['prenomVip'];?> <?php echo $cnj['nomVip'];?></a></b></p>
+				<p><?php echo $event['lieuMariage'];?> - <?php echo datef($event['dateMariage']);?></p>
 		</div>
-		<?php } ?>
+		<?php }?>
 	</div>
+	
+	<?php if(isset($nbaff4)&&$nbaff4!=0){?>
+	<div id="statut">
+		<h1><i class="fa fa-chain-broken" aria-hidden="true"></i> Les ex-conjoints</h1>
+		<?php foreach($recap as $list){ ?>
+			<p><b><a href="index.php?page=vip&amp;profil=<?php echo $list['numVip'];?>" ><?php echo $list['prenomVip'];?> <?php echo $list['nomVip'];?></a></b> - 
+			<?php echo datef($list['dateMariage']);?> / <?php echo datef($list['dateDivorce']);?> - <?php echo $list['lieuMariage'];?></p>
+		<?php }?>
+	</div>
+	<?php }?>
+	
 	<?php if(isset($nbaff3)&&$nbaff3!=0){?>
 	<div id="photo">
 		<h1><i class="fa fa-camera" aria-hidden="true"></i> Galeries</h1>
