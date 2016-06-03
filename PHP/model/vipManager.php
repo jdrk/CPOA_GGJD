@@ -3,8 +3,7 @@ class vipManager extends Model{
 	
 	public function getVip($codeRole,$gender){
 		
-		if($codeRole=='Tout')
-		{
+		if($codeRole=='Tout'){
 			if($gender!="MF")
 			{
 				$rep=$this->executerRequete('SELECT * FROM VIP WHERE civilite=:civilite ORDER BY prenomVip',
@@ -19,15 +18,12 @@ class vipManager extends Model{
 			return $all;
 			
 		}
-		if($codeRole=='AC' || $codeRole=='RE')
-		{
-			if($gender!="MF")
-			{
+		if($codeRole=='AC' || $codeRole=='RE'){
+			if($gender!="MF"){
 				$rep=$this->executerRequete('SELECT * FROM  VIP WHERE (codeRole=:codeRole OR codeRole="AR") AND civilite=:civilite ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole,':civilite'=>$gender));
 			}
-			else
-			{
+			else{
 				$rep=$this->executerRequete('SELECT * FROM VIP WHERE (codeRole=:codeRole OR codeRole="AR") ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole));
 			}
@@ -38,13 +34,11 @@ class vipManager extends Model{
 		}
 		else
 		{
-			if($gender!="MF")
-			{
+			if($gender!="MF"){
 				$rep=$this->executerRequete('SELECT * FROM VIP WHERE codeRole=:codeRole AND civilite=:civilite ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole,':civilite'=>$gender));
 			}
-			else
-			{
+			else{
 				$rep=$this->executerRequete('SELECT * FROM VIP WHERE codeRole=:codeRole ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole));
 			}
@@ -101,8 +95,13 @@ class vipManager extends Model{
 		$rep->closeCursor();
 		return $aff;
 	}
-
 	
-	
+	public function getSearchV($rech){
+		$rep=$this->executerRequete('SELECT * FROM VIP WHERE nomVip LIKE :rech OR prenomVip LIKE :rech ORDER BY prenomVip',
+		array(':rech'=>$rech));
+		$search=$rep->fetchAll();
+		$rep->closeCursor();
+		return $search;
+	}
 }
 ?>

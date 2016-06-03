@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     margin: 0; 
 	padding: 0;
-	font-family: 'Calibri Light', Calibri;
+	font-family: 'Calibri Light', Calibri, sans-serif;
 }
 
 body{
@@ -11,16 +11,13 @@ body{
 	background-color: #eee;
 }
 
-header, footer, nav{
-	font-family: 'Philosopher', sans-serif;
-}
-
 header{
 	font-size: 40pt;
 	background-color: #4F1A5C;
 	color: white;
 	padding: 10px;
 	border-left: solid 15px gold;
+	font-family: 'Philosopher', sans-serif;
 }
 
 nav{
@@ -51,6 +48,11 @@ nav ul li a:hover{
 	transition: 1s;
 }
 
+#recherche{
+	display: inline;
+	color: white;
+}
+
 .selection{
 	color: gold;
 }
@@ -59,12 +61,11 @@ nav ul li a:hover{
 
 #form{
 	text-align: center;
+	margin-bottom: 30px;
 }
 
 select{
 	height: 25px;
-	background-color: #4F1A5C;
-	color: white;
 	border: none;
 	border-radius: 5px;
 	padding: 0 5px;
@@ -76,16 +77,16 @@ select option{
 	height: 25px;
 	padding: 0 5px;
 	outline: none;
+	
 }
 
 button{
 	border-radius: 5px;
-	background-color: #4F1A5C;
 	height: 25px;
-	color: white;
 	outline: none;
 	border: none;
 	cursor: pointer;
+	background-color: white;
 }
 
 .vip {
@@ -232,12 +233,12 @@ button{
 	width: 150px;
 }
 
-.vipF, .vipM a{
+.vipF a{
 	text-decoration: none;
 	color: black;
 }
 
-.vipF, .vipM  a:hover{
+.vipF a:hover{
 	color: #4F1A5C;
 	transition:1s;
 }
@@ -253,6 +254,58 @@ button{
 
 /*fin detailf*/
 
+/*ACTU*/
+
+#birthday, #nbvip, #nbact, #nbrea, #mariage, #divorce{
+	background-color: white;
+	text-align: center;
+	display: inline-block;
+}
+.vipB{
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+}
+
+.vipB a {
+	text-decoration:none;
+	color: black;
+	font-weight:bold;
+}
+.vipB a:hover {
+	color: #4F1A5C;
+	transition: 1s;
+}
+
+#birthday{
+	width: 100%;
+	margin: 2px auto;
+}
+
+#birthday img{
+	width: 100px;
+}
+
+#birthday h2{
+	margin-bottom: 50px;
+}
+
+
+.greyD {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+}
+
+#nbvip, #nbact, #nbrea{
+	width: 33%;
+	margin: 2px auto;
+}
+
+/*ACTU*/
+
 #space{
 	width:70%;
 	margin: 35px auto;
@@ -260,6 +313,10 @@ button{
 
 .compteur{
 	text-align: center;
+	color: #4F1A5C;
+}
+
+.counter{
 	color: #4F1A5C;
 }
 

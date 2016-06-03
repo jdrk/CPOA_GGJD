@@ -9,7 +9,8 @@ BEGIN
 	
 	DECLARE codeS1 VARCHAR(1);
 	DECLARE codeS2 VARCHAR(1);
-	DECLARE dateD DATE;
+	DECLARE dateD1 DATE;
+	DECLARE dateD2 DATE;
 	DECLARE statutM_e CONDITION FOR SQLSTATE '45001';
 	DECLARE vipIdentique_e CONDITION FOR SQLSTATE '45002';
 	DECLARE dateDivorceI_e CONDITION FOR SQLSTATE '45003';
@@ -22,9 +23,13 @@ BEGIN
 	FROM VIP
 	WHERE numVip=NEW.numVipConjoint;
 
-	SELECT MAX(dateDivorce) INTO dateD
+	SELECT MAX(dateDivorce) INTO dateD1
 	FROM NEWEVENT
 	WHERE numVip=NEW.numVip;
+	
+	SELECT MAX(dateDivorce) INTO dateD2
+	FROM NEWEVENT
+	WHERE numVipConjoint=NEW.numVipConjoint;
 
 	IF(NEW.numVip=NEW.numVipConjoint) THEN
 		CALL vipIdentique_e;
@@ -34,7 +39,7 @@ BEGIN
        CALL statutM_e;
     END IF;
 
-    IF(dateD>NEW.dateMariage) THEN
+    IF(dateD1>=NEW.dateMariage OR dateD2>=NEW.dateMariage) THEN
        CALL dateDivorceI_e;
     END IF;
 
@@ -61,7 +66,7 @@ BEGIN
 	FROM NEWEVENT 
 	WHERE numVip=NEW.numVip AND dateDivorce='1000-01-01';
 
-	IF(dateM>=NEW.dateDivorce) THEN
+	IF(dateM>=NEW.dateDivorce AND NEW.dateDivorce!='1000-01-01') THEN
 		CALL dateDivorceU_e;
 	END IF;
 END
@@ -71,8 +76,10 @@ changeStatutD AFTER UPDATE
 -MAJ du codeStatut du numVip et celui du numVipConjoint à D
 "			"			"			"
 BEGIN
-	UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVip;
-	UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVipConjoint;
+	IF(NEW.dateDivorce>OLD.dateDivorce) THEN
+		UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVip;
+		UPDATE VIP SET codeStatut='D' WHERE numVip=NEW.numVipConjoint;
+	END IF;
 END
 ##################################################################################################
 Scénario mariage/divorce successif avec les mêmes VIP

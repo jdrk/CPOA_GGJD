@@ -36,5 +36,5 @@
 
 	
 <?php $content=ob_get_clean(); ?>
-<?php $title='Liste FILMS'; $content; ?>
+<?php $title='Liste FILMS'; $rechpage='index.php?page=listefilm'; $placeholder='titre, année du film ...'; $content; ?>
 <?php include("views/layout.php"); ?>

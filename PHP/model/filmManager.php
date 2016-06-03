@@ -20,8 +20,7 @@ class filmManager extends Model{
 		}
 	}
 	
-	public function getGenre()
-	{
+	public function getGenre(){
 		$rep=$this->executerRequete('SELECT * FROM GENRE');
 		$tab=$rep->fetchAll();
 		$rep->closeCursor();
@@ -36,7 +35,7 @@ class filmManager extends Model{
 		return $det;
 	}
 	
-	public function getCasting($numVisa) {
+	public function getCasting($numVisa){
 		$rep=$this->executerRequete('SELECT * FROM ACTEUR A, VIP V WHERE numVisa=:numVisa AND V.numVip=A.numVip',
 		array(':numVisa'=>$numVisa));
 		$casting=$rep->fetchAll();
@@ -44,7 +43,7 @@ class filmManager extends Model{
 		return $casting;
 	}
 	
-	public function getProducer($numVisa) {
+	public function getProducer($numVisa){
 		$rep=$this->executerRequete('SELECT * FROM REALISATEUR R, VIP V WHERE numVisa=:numVisa AND V.numVip=R.numVip',
 		array(':numVisa'=>$numVisa));
 		$producer=$rep->fetch();
@@ -52,5 +51,12 @@ class filmManager extends Model{
 		return $producer;
 	}
 	
+	public function getSearchF($rech){
+		$rep=$this->executerRequete('SELECT * FROM FILM WHERE titreFilm LIKE :rech OR anneeSortie LIKE :rech',
+		array(':rech'=>$rech));
+		$search=$rep->fetchAll();
+		$rep->closeCursor();
+		return $search;
+	}	
 }
 ?>

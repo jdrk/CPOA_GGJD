@@ -1,6 +1,6 @@
 <?php
-
 	require_once('model/model.php');
+	require_once('model/actuManager.php');
 	require_once('model/vipManager.php');
 	require_once('model/filmManager.php');
 	
@@ -45,6 +45,13 @@
 						$gender="MF";
 					}
 				}
+				$nbPic = count($req);
+			}
+			elseif(isset($_POST['recherche']))
+			{
+				$src=$_POST['recherche'].'%';
+				$rech=new vipManager;
+				$req=$rech->getSearchV($src);
 				$nbPic = count($req);
 			}
 			else
@@ -121,6 +128,13 @@
 				}
 				$nbPic = count($req);
 			}
+			elseif(isset($_POST['recherche']))
+			{
+				$src=$_POST['recherche'].'%';
+				$rech=new filmManager;
+				$req=$rech->getSearchF($src);
+				$nbPic = count($req);
+			}
 			else
 			{
 				$affiche= new filmManager();
@@ -160,7 +174,15 @@
 	else
 	{
 		$selection1='selection';
-		include("views/scoop.php");
+		$nb=new actuManager();
+		$nbVip=$nb->getnbVip();
+		$nbAct=$nb->getnbAct();
+		$nbRea=$nb->getnbRea();
+		$m=date('m');
+		$mois='%-'.$m.'-%';
+		$birth=$nb->getBirth($mois);
+		
+		include("views/actualite.php");
 	}
 	
 ?>

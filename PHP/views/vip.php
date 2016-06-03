@@ -19,7 +19,13 @@
 	</form>
 	
 	<?php
-	echo'<p class="compteur">'.$nbPic.' VIP'.'</p>';
+	if($nbPic==0||$nbPic==1)
+	{
+		echo'<p class="compteur">'.$nbPic.' VIP trouvé'.'</p>';
+	}
+	else{
+		echo'<p class="compteur">'.$nbPic.' VIP trouvés'.'</p>';
+	}
 	foreach($req as $data)
 	{?>
 	<table class=vip>
@@ -56,5 +62,5 @@
 		</tr>
 	</table>
 <?php }$content=ob_get_clean(); ?>
-<?php $title='Liste VIP'; $content; ?>
+<?php $title='Liste VIP'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom du vip ... '; $content; ?>
 <?php include("views/layout.php"); ?>
