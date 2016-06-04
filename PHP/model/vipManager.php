@@ -6,12 +6,12 @@ class vipManager extends Model{
 		if($codeRole=='Tout'){
 			if($gender!="MF")
 			{
-				$rep=$this->executerRequete('SELECT * FROM VIP WHERE civilite=:civilite ORDER BY prenomVip',
+				$rep=$this->executerRequete('SELECT numVip, codeRole, civilite, prenomVip, nomVip, idProfil, dateNaissance FROM VIP WHERE civilite=:civilite ORDER BY prenomVip',
 				array(':civilite'=>$gender));
 			}
 			else
 			{
-				$rep=$this->executerRequete('SELECT * FROM VIP ORDER BY prenomVip');
+				$rep=$this->executerRequete('SELECT numVip, codeRole, civilite, prenomVip, nomVip, idProfil, dateNaissance FROM VIP ORDER BY prenomVip');
 			}
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
@@ -20,11 +20,11 @@ class vipManager extends Model{
 		}
 		if($codeRole=='AC' || $codeRole=='RE'){
 			if($gender!="MF"){
-				$rep=$this->executerRequete('SELECT * FROM  VIP WHERE (codeRole=:codeRole OR codeRole="AR") AND civilite=:civilite ORDER BY prenomVip;',
+				$rep=$this->executerRequete('SELECT numVip, codeRole, civilite, prenomVip, nomVip, idProfil, dateNaissance FROM  VIP WHERE (codeRole=:codeRole OR codeRole="AR") AND civilite=:civilite ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole,':civilite'=>$gender));
 			}
 			else{
-				$rep=$this->executerRequete('SELECT * FROM VIP WHERE (codeRole=:codeRole OR codeRole="AR") ORDER BY prenomVip;',
+				$rep=$this->executerRequete('SELECT numVip, codeRole, civilite, prenomVip, nomVip, idProfil, dateNaissance FROM VIP WHERE (codeRole=:codeRole OR codeRole="AR") ORDER BY prenomVip;',
 				array(':codeRole'=>$codeRole));
 			}
 			
@@ -49,7 +49,7 @@ class vipManager extends Model{
 	}
 
 	public function getDetails($numVip){
-		$rep=$this->executerRequete('SELECT * FROM VIP V, NATIONALITE N WHERE numVip=:numVip AND V.nationalite=N.idNat;',
+		$rep=$this->executerRequete('SELECT numVip, nomVip, prenomVip, dateNaissance, civilite, lieuNaissance, nomNat, codeStatut, idProfil, codeRole FROM VIP V, NATIONALITE N WHERE numVip=:numVip AND V.nationalite=N.idNat;',
 		array(':numVip'=>$numVip));
 		$det=$rep->fetch();
 		$rep->closeCursor();
@@ -57,7 +57,7 @@ class vipManager extends Model{
 	}
 
 	public function getPresentA($numVip){
-		$rep=$this->executerRequete('SELECT * FROM ACTEUR A, FILM F WHERE A.numVisa=F.numVisa AND numVip=:numVip',
+		$rep=$this->executerRequete('SELECT A.numVip, F.numVisa, idAffiche FROM ACTEUR A, FILM F WHERE A.numVisa=F.numVisa AND numVip=:numVip',
 		array(':numVip'=>$numVip));
 		$aff=$rep->fetchAll();
 		$rep->closeCursor();
@@ -65,7 +65,7 @@ class vipManager extends Model{
 	}
 	
 	public function getPresentR($numVip){
-		$rep=$this->executerRequete('SELECT * FROM REALISATEUR R, FILM F WHERE R.numVisa=F.numVisa AND numVip=:numVip',
+		$rep=$this->executerRequete('SELECT R.numVip, F.numVisa, idAffiche FROM REALISATEUR R, FILM F WHERE R.numVisa=F.numVisa AND numVip=:numVip',
 		array(':numVip'=>$numVip));
 		$aff=$rep->fetchAll();
 		$rep->closeCursor();

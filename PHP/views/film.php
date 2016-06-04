@@ -14,27 +14,21 @@
 		<button type="submit">FILTRER</button>
 	</form>
 	
-	<div id="bloc">
-	<?php
-	if($nbPic==0 && isset($libelle))
-	{
-		echo'<p class="compteur">Aucun film de genre "'.$libelle.'" trouvé</p>';
-	}
-	elseif($nbPic==1)
-	{
-		echo'<p class="compteur">'.$nbPic.' FILM DISPONIBLE'.'</p>';
-	}
-	else
-	{
-		echo'<p class="compteur">'.$nbPic.' FILMS DISPONIBLES'.'</p>';
-	}
-	foreach($req as $data)
-	{?>
-		<a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>"><img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></a>
-	<?php } ?>
+	<div id="listefilm">
+		<?php
+		if($nbPic==0 && isset($libelle)){
+			echo'<p class="compteur">Aucun film de genre "'.$libelle.'" trouvé</p>';
+		}elseif($nbPic==1 || $nbPic==0){
+			echo'<p class="compteur"><i class="fa fa-film" aria-hidden="true"></i> '.$nbPic.' FILM'.'</p>';
+		}else{
+			echo'<p class="compteur"><i class="fa fa-film" aria-hidden="true"></i> '.$nbPic.' FILMS'.'</p>';
+		}
+		foreach($req as $data){?>
+			<a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>">
+			<img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></a>	
+		<?php } ?>
 	</div>
-
 	
 <?php $content=ob_get_clean(); ?>
-<?php $title='Liste FILMS'; $rechpage='index.php?page=listefilm'; $placeholder='titre, année du film ...'; $content; ?>
+<?php $title='FILMS'; $rechpage='index.php?page=listefilm'; $placeholder='titre, année du film ...'; $content; ?>
 <?php include("views/layout.php"); ?>

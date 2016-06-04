@@ -1,3 +1,4 @@
+/**************************************LAYOUT******************************************/
 html, body {
     height: 100%;
     margin: 0; 
@@ -48,16 +49,125 @@ nav ul li a:hover{
 	transition: 1s;
 }
 
+h1{
+	font-size: 18pt;
+}
+
 #recherche{
 	display: inline;
 	color: white;
+}
+
+#barrech{
+	padding: 5px;
+	border: none;
+	border-radius: 5px;
+	color: #4F1A5C;
+	outline: none;
 }
 
 .selection{
 	color: gold;
 }
 
-/*début tableau liste vip de vip.php*/
+#space{
+	width: 70%;
+	margin: 35px auto;
+}
+
+a {
+	text-decoration:none;
+	color: black;
+	font-weight:bold;
+}
+a:hover {
+	color: #4F1A5C;
+	transition: 1s;
+}
+
+footer{
+	font-size: 12pt;
+	background-color: #4F1A5C;
+	text-align: center;
+	color: white;
+	display: table-row;
+}
+
+/****************************************LAYOUT******************************************/
+
+/***************************************ACTUALITE****************************************/
+#panel{
+	width: 100%;
+	background-color: white;
+}
+
+#birthday, #nbvip, #nbact, #nbrea, #nbfilm{
+	background-color: white;
+	text-align: center;
+	display: inline-block;
+}
+
+#nbvip, #nbact, #nbrea, #nbfilm{
+	width: 24%;
+	margin: 2px 0px;
+}
+
+#birthday{
+	width: 100%;
+	margin: 5px auto;
+}
+
+#birthday img{
+	width: 100px;
+	border-radius: 75px;
+}
+
+#birthday h1{
+	margin-bottom: 20px;
+}
+
+.jourj, .jourp, .joura {
+	font-weight: bold;
+}
+
+.jourj{
+	color: #42B762;
+}
+
+.jourp{
+	color: #FA5A5A;
+}
+
+.joura{
+	color: #4F58D7;
+}
+
+.vipB{
+	display: inline-block;
+	width: 200px;
+	text-align: center;
+}
+
+.grey {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+}
+
+.compteur{
+	text-align: center;
+	color: #4F1A5C;
+}
+
+.counter{
+	color: #4F1A5C;
+}
+
+/*************************************ACTUALITE****************************************/
+
+/***************************************VIP********************************************/
 
 #form{
 	text-align: center;
@@ -89,37 +199,28 @@ button{
 	background-color: white;
 }
 
-.vip {
+.listevip {
 	margin: 10px auto;
 	background-color: white;
 	border-collapse: collapse;
 }
 
-.vip tr{
+.listevip tr{
 	padding: 5px;
 }
 
-.vip td{
+.listevip td{
 	width: 200px;
 	padding: 5px;
 }
 
-.vip td a {
-	text-decoration:none;
-	color: black;
-	font-weight:bold;
-}
-.vip td a:hover {
-	color: #4F1A5C;
-	transition: 1s;
-}
-
-.vip td img {
+.listevip td img {
 	width: 75px;
+	border-radius: 75px;
 }
-/*fin tableau liste vip de vip.php*/
+/***************************************VIP********************************************/
 
-/*debut tableau detail vip de detailv.php*/
+/***********************************DETAIL VIP*****************************************/
 .detailv{
 	width:100%;
 	margin: 10px 0;
@@ -134,10 +235,7 @@ button{
 
 .detailv td img {
 	width: 150px;
-}
-
-#filmo h1, #statut h1, #photo  h1{
-	font-size: 15pt;
+	border-radius: 75px;
 }
 
 #filmo{
@@ -160,17 +258,6 @@ button{
 	margin-bottom: 10px;
 }
 
-#statut a{
-	text-decoration:none;
-	color: black;
-	font-weight:bold;
-}
-
-#statut a:hover{
-	color: #4F1A5C;
-	transition: 1s;
-}
-
 #photo{
 	background-color: white;
 	width: 62%;
@@ -183,36 +270,46 @@ button{
 	width: 250px;
 }
 
+.vipM{
+	width: 300px;
+	padding: 0px 10px
+}
 
-/*fin tableau detail vip de detailv.php*/
+.vipM img{
+	width: 100px;
+	border-radius: 75px;
+}
+/***************************************DETAIL VIP********************************************/
 
-/*film*/
+/***************************************FILM********************************************/
 
-#bloc{
+#listefilm{
 	
 	text-align: center;
 }
 
-#bloc img{
+#listefilm img{
 	width : 150px;
 	border: solid 10px white;
 	margin: 1px 20px;
 	display: inline;
 }
-/*fin film*/
+/***************************************FILM********************************************/
 
-/*detailf*/
+/************************************DETAIL FILM****************************************/
 
 #detailf{
 	background-color: white;
 	padding: 1px 10px;
 	width: 20%;
 	float: left;
+	margin-bottom: 25px;
 }
 
 #detailf img{
 	width: 100%;
 }
+
 
 #casting{
 	background-color: white;
@@ -231,106 +328,15 @@ button{
 
 .vipF img{
 	width: 150px;
+	border-radius: 75px;
 }
 
-.vipF a{
-	text-decoration: none;
-	color: black;
-}
+/************************************DETAIL FILM****************************************/
 
-.vipF a:hover{
-	color: #4F1A5C;
-	transition:1s;
-}
-
-.vipM{
-	width: 300px;
-	padding: 0px 10px
-}
-
-.vipM img{
-	width: 100px;
-}
-
-/*fin detailf*/
-
-/*ACTU*/
-
-#birthday, #nbvip, #nbact, #nbrea, #mariage, #divorce{
-	background-color: white;
-	text-align: center;
-	display: inline-block;
-}
-.vipB{
-	display: inline-block;
-	width: 200px;
-	text-align: center;
-}
-
-.vipB a {
-	text-decoration:none;
-	color: black;
-	font-weight:bold;
-}
-.vipB a:hover {
-	color: #4F1A5C;
-	transition: 1s;
-}
-
-#birthday{
-	width: 100%;
-	margin: 2px auto;
-}
-
-#birthday img{
-	width: 100px;
-}
-
-#birthday h2{
-	margin-bottom: 50px;
-}
-
-
-.greyD {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-}
-
-#nbvip, #nbact, #nbrea{
-	width: 33%;
-	margin: 2px auto;
-}
-
-/*ACTU*/
-
-#space{
-	width:70%;
-	margin: 35px auto;
-}
-
-.compteur{
-	text-align: center;
-	color: #4F1A5C;
-}
-
-.counter{
-	color: #4F1A5C;
-}
-
+/********************************************ERREUR**********************************/
 #error{
-	background-color:#F6B3B3;
+	background-color: #F6B3B3;
 	padding: 15px 30px;
 	border-left: solid 5px red;
-	
 }
-
-footer{
-	font-size: 12pt;
-	background-color: #4F1A5C;
-	text-align: center;
-	color: white;
-	display : table-row;
-}
+/********************************************ERREUR**********************************/

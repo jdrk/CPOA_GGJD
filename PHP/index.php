@@ -10,6 +10,7 @@
 		if($_GET['page']=='listevip')
 		{
 			$selection2='selection';
+			$libelle=null;
 			if(isset($_POST['metier']))
 			{
 				$obj=new vipManager();
@@ -67,17 +68,22 @@
 		elseif($_GET['page']=='vip')
 		{	
 			$selection2='selection';
+			
 			$detail=new vipManager();
 			$data=$detail->getDetails($_GET['profil']);
+			
 			$affiche=new vipManager();
 			$req=$affiche->getPresentA($_GET['profil']);
 			$nbaff = count($req);
+			
 			$affiche2=new vipManager();
 			$req2=$affiche2->getPresentR($_GET['profil']);
 			$nbaff2 = count($req2);
+			
 			$photo=new vipManager();
 			$pic=$photo->getPhoto($_GET['profil']);
 			$nbaff3 = count($pic);
+			
 			$evenement=new vipManager();
 			$event=$evenement->getEvent($_GET['profil']);
 			
@@ -105,11 +111,21 @@
 			{
 				include('views/detailv.php');
 			}
+			
+			if(isset($_POST['recherche']))
+			{
+				$src=$_POST['recherche'].'%';
+				$rech=new vipManager;
+				$req=$rech->getSearchV($src);
+				$nbPic = count($req);
+			}
 		}
+		
 		//si page=listefilm
 		elseif($_GET['page']=='listefilm')
 		{
 			$selection3='selection';
+			$libelle=null;
 			$genre= new filmManager();
 			$req2=$genre->getGenre();
 			
@@ -152,8 +168,11 @@
 			$data=$detail->getDetails($_GET['visa']);
 			$casting=new filmManager();
 			$req=$casting->getCasting($_GET['visa']);
+			$nbCast=count($req);
 			$prod=new filmManager();
 			$producer=$prod->getProducer($_GET['visa']);
+			$nbProd=count($producer);
+			
 			if(count($data)<2)
 			{
 				include('views/error.php');
@@ -163,6 +182,14 @@
 			{
 				include('views/detailf.php');
 			}
+			
+			if(isset($_POST['recherche']))
+			{
+				$src=$_POST['recherche'].'%';
+				$rech=new filmManager;
+				$req=$rech->getSearchF($src);
+				$nbPic = count($req);
+			}
 		}
 		//sinon renvoie la page d'erreur
 		else
@@ -171,6 +198,7 @@
 			header ("Refresh: 8;url=index.php"); 
 		}
 	}
+	//par défaut actu
 	else
 	{
 		$selection1='selection';
@@ -178,9 +206,18 @@
 		$nbVip=$nb->getnbVip();
 		$nbAct=$nb->getnbAct();
 		$nbRea=$nb->getnbRea();
+		$nbFilm=$nb->getnbFilm();
 		$m=date('m');
 		$mois='%-'.$m.'-%';
 		$birth=$nb->getBirth($mois);
+		
+		if(isset($_POST['recherche']))
+		{
+			$src=$_POST['recherche'].'%';
+			$rech=new vipManager;
+			$req=$rech->getSearchV($src);
+			$nbPic = count($req);
+		}
 		
 		include("views/actualite.php");
 	}

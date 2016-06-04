@@ -5,14 +5,14 @@ class filmManager extends Model{
 	{
 		if($genre=='Tout')
 		{
-			$rep=$this->executerRequete('SELECT * FROM FILM F ORDER BY titreFilm');
+			$rep=$this->executerRequete('SELECT numVisa, titreFilm, idAffiche FROM FILM F ORDER BY titreFilm');
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
 			return $all;
 		}
 		else
 		{
-			$rep=$this->executerRequete('SELECT * FROM FILM F, GENRE G WHERE F.idGenre=G.idGenre AND libelleGenre=:genre',
+			$rep=$this->executerRequete('SELECT numVisa, titreFilm, idAffiche FROM FILM F, GENRE G WHERE F.idGenre=G.idGenre AND libelleGenre=:genre',
 			array(':genre'=>$genre));
 			$all=$rep->fetchAll();
 			$rep->closeCursor();
@@ -21,14 +21,14 @@ class filmManager extends Model{
 	}
 	
 	public function getGenre(){
-		$rep=$this->executerRequete('SELECT * FROM GENRE');
+		$rep=$this->executerRequete('SELECT * FROM GENRE ORDER BY libelleGenre');
 		$tab=$rep->fetchAll();
 		$rep->closeCursor();
 		return $tab;
 	}
 	
 	public function getDetails($numVisa){
-		$rep=$this->executerRequete('SELECT * FROM FILM F, GENRE G WHERE numVisa=:numVisa AND F.idGenre=G.idGenre;',
+		$rep=$this->executerRequete('SELECT numVisa, titreFilm, idAffiche, anneeSortie, libelleGenre FROM FILM F, GENRE G WHERE numVisa=:numVisa AND F.idGenre=G.idGenre;',
 		array(':numVisa'=>$numVisa));
 		$det=$rep->fetch();
 		$rep->closeCursor();
@@ -36,7 +36,7 @@ class filmManager extends Model{
 	}
 	
 	public function getCasting($numVisa){
-		$rep=$this->executerRequete('SELECT * FROM ACTEUR A, VIP V WHERE numVisa=:numVisa AND V.numVip=A.numVip',
+		$rep=$this->executerRequete('SELECT V.numVip, prenomVip, nomVip, idProfil FROM ACTEUR A, VIP V WHERE numVisa=:numVisa AND V.numVip=A.numVip',
 		array(':numVisa'=>$numVisa));
 		$casting=$rep->fetchAll();
 		$rep->closeCursor();
@@ -44,7 +44,7 @@ class filmManager extends Model{
 	}
 	
 	public function getProducer($numVisa){
-		$rep=$this->executerRequete('SELECT * FROM REALISATEUR R, VIP V WHERE numVisa=:numVisa AND V.numVip=R.numVip',
+		$rep=$this->executerRequete('SELECT V.numVip, prenomVip, nomVip, idProfil, civilite FROM REALISATEUR R, VIP V WHERE numVisa=:numVisa AND V.numVip=R.numVip',
 		array(':numVisa'=>$numVisa));
 		$producer=$rep->fetch();
 		$rep->closeCursor();
