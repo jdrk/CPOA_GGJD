@@ -97,7 +97,7 @@ class vipManager extends Model{
 	}
 	
 	public function getSearchV($rech){
-		$rep=$this->executerRequete('SELECT * FROM VIP WHERE nomVip LIKE :rech OR prenomVip LIKE :rech ORDER BY prenomVip',
+		$rep=$this->executerRequete('SELECT * FROM VIP WHERE nomVip LIKE :rech OR prenomVip LIKE :rech OR CONCAT(prenomVip," ",nomVip) LIKE :rech OR CONCAT(nomVip," ",prenomVip) LIKE :rech ORDER BY prenomVip',
 		array(':rech'=>$rech));
 		$search=$rep->fetchAll();
 		$rep->closeCursor();

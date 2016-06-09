@@ -16,6 +16,7 @@
 					<li><a class="<?php if(isset($selection1))echo $selection1;?>" href="index.php"><i class="fa fa-newspaper-o" aria-hidden="true"></i>  ACTU</a></li>
 					<li><a class="<?php if(isset($selection2))echo $selection2;?>" href="index.php?page=listevip"><i class="fa fa-users" aria-hidden="true"></i>  VIP</a></li>
 					<li><a class="<?php if(isset($selection3))echo $selection3;?>" href="index.php?page=listefilm"><i class="fa fa-film" aria-hidden="true"></i>  FILMS</a></li>
+					<li><a class="<?php if(isset($selection4))echo $selection4;?>" href="index.php?page=galerie"><i class="fa fa-camera" aria-hidden="true"></i>  GALERIE</a></li>
 					<form id="recherche" method="POST" action="<?php echo $rechpage;?><?php if(isset($rechpage2)) echo $rechpage2; ?>">
 					<input id="barrech" type="text" placeholder="<?php echo $placeholder;?>" name="recherche" />  <i class="fa fa-search" aria-hidden="false"></i>
 					</form>

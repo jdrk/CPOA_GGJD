@@ -52,5 +52,5 @@
 		</tr>
 	</table>
 <?php }$content=ob_get_clean(); ?>
-<?php $title='VIP'; $rechpage='index.php?page=listevip'; $placeholder='nom ou prénom du vip ... '; $content; ?>
+<?php $title='VIP'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom du vip ... '; $content; ?>
 <?php include("views/layout.php"); ?>

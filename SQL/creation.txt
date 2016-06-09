@@ -32,7 +32,7 @@ CREATE TABLE VIP
 	dateNaissance DATE NOT NULL,
 	lieuNaissance VARCHAR(20) NOT NULL,
 	codeRole VARCHAR(2) NOT NULL,
-	codeStatut VARCHAR(1) NOT NULL,
+	codeStatut VARCHAR(1) DEFAULT "C" NOT NULL,
 	nationalite VARCHAR(30) NOT NULL,
 	idProfil VARCHAR(10) DEFAULT "P00.jpg" NOT NULL,
 	CONSTRAINT pk_vip PRIMARY KEY(numVip),
@@ -43,8 +43,8 @@ CREATE TABLE PHOTO
 (
 	numVip VARCHAR(3),
 	idPhoto VARCHAR(10) NOT NULL,
-	datePhoto DATE NULL,
-	lieuPhoto VARCHAR(20) NULL,
+	datePhoto DATE DEFAULT "1000-01-01" NOT NULL,
+	lieuPhoto VARCHAR(20) DEFAULT "Inconnu" NOT NULL,
 	CONSTRAINT pk_photo PRIMARY KEY(numVip,idPhoto),
 	CONSTRAINT fk_photo FOREIGN KEY(numVip) REFERENCES VIP(numVip)
 );
@@ -72,21 +72,9 @@ CREATE TABLE NEWEVENT
 	numVip VARCHAR(3),
 	dateMariage DATE NOT NULL,
 	numVipConjoint VARCHAR(3) NOT NULL,
-	lieuMariage VARCHAR(20) NULL,
-	dateDivorce DATE NULL,
+	lieuMariage VARCHAR(20) DEFAULT "Inconnu" NOT NULL,
+	dateDivorce DATE NOT NULL,
 	CONSTRAINT pk_eventn PRIMARY KEY(numVip,dateMariage),
 	CONSTRAINT fk_eventn FOREIGN KEY(numVip) REFERENCES VIP(numVip),
 	CONSTRAINT fk_eventnC FOREIGN KEY(numVipConjoint) REFERENCES VIP(numVip)
-);
-
-CREATE TABLE OLDEVENT
-(
-	numVip VARCHAR(3),
-	dateMariage DATE NOT NULL,
-	numVipConjoint VARCHAR(3) NOT NULL,
-	lieuMariage VARCHAR(20) NOT NULL,
-	dateDivorce DATE NOT NULL,
-	CONSTRAINT pk_evento PRIMARY KEY(numVip,dateMariage),
-	CONSTRAINT fk_evento FOREIGN KEY(numVip) REFERENCES VIP(numVip),
-	CONSTRAINT fk_eventoC FOREIGN KEY(numVipConjoint) REFERENCES VIP(numVip)
 );

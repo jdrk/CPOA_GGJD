@@ -49,5 +49,5 @@
 <script src="assets/js/waypoints.min.js"></script>
 <script src="assets/js/jquery.counterup.min.js"></script>
 <?php $content=ob_get_clean(); ?>
-<?php $title='ACTU'; $rechpage='index.php?page=listevip'; $placeholder='nom ou prénom du vip ... '; $content; ?>
+<?php $title='ACTU'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom du vip ... '; $content; ?>
 <?php include("views/layout.php"); ?>

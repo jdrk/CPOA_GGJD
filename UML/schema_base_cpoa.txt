@@ -1,0 +1,14 @@
+POSSEDE, 0N NATIONALITE, 01 VIP
+NATIONALITE: idNat, nomNat
+NOTIFIE, 0N VIP, 11 NEWEVENT
+NEWEVENT: numVip, _dateMariage, numVipConjoint, lieuMariage, dateDivorce
+
+APPARAIT, 1N VIP, 0N PHOTO
+VIP: numVip, nomVip, prenomVip, civilite, dateNaissance, lieuNaissance, codeRole, codeStatut, nationalite, idProfil
+ACTEUR, 0N FILM, 0N VIP : numVip, numVisa
+GENRE: idGenre, libelleGenre
+
+PHOTO: numVip, _idPhoto, datePhoto, lieuPhoto
+REALISATEUR, 0N FILM, 0N VIP: numVip, numVisa
+FILM: numVisa, titreFilm, idGenre, anneeSortie, idAffiche
+DISPOSE, 01 FILM, 0N GENRE

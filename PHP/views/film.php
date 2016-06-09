@@ -14,7 +14,7 @@
 		<button type="submit">FILTRER</button>
 	</form>
 	
-	<div id="listefilm">
+	
 		<?php
 		if($nbPic==0 && isset($libelle)){
 			echo'<p class="compteur">Aucun film de genre "'.$libelle.'" trouvé</p>';
@@ -24,10 +24,13 @@
 			echo'<p class="compteur"><i class="fa fa-film" aria-hidden="true"></i> '.$nbPic.' FILMS'.'</p>';
 		}
 		foreach($req as $data){?>
-			<a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>">
-			<img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></a>	
+		<div id="listefilm">
+			<p><a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>">
+			<img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></a></p>
+			<p><a href="index.php?page=film&amp;visa=<?php echo $data['numVisa'];?>"><?php echo $data['titreFilm']; ?></a></p>
+		</div>
 		<?php } ?>
-	</div>
+
 	
 <?php $content=ob_get_clean(); ?>
 <?php $title='FILMS'; $rechpage='index.php?page=listefilm'; $placeholder='titre, année du film ...'; $content; ?>

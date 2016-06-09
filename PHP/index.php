@@ -50,7 +50,7 @@
 			}
 			elseif(isset($_POST['recherche']))
 			{
-				$src=$_POST['recherche'].'%';
+				$src='%'.$_POST['recherche'].'%';
 				$rech=new vipManager;
 				$req=$rech->getSearchV($src);
 				$nbPic = count($req);
@@ -146,7 +146,7 @@
 			}
 			elseif(isset($_POST['recherche']))
 			{
-				$src=$_POST['recherche'].'%';
+				$src='%'.$_POST['recherche'].'%';
 				$rech=new filmManager;
 				$req=$rech->getSearchF($src);
 				$nbPic = count($req);
@@ -185,11 +185,30 @@
 			
 			if(isset($_POST['recherche']))
 			{
-				$src=$_POST['recherche'].'%';
+				$src='%'.$_POST['recherche'].'%';
 				$rech=new filmManager;
 				$req=$rech->getSearchF($src);
 				$nbPic = count($req);
 			}
+		}
+		//si page=galerie
+		elseif($_GET['page']=='galerie')
+		{
+			$selection4='selection';
+			$galerie=new actuManager();
+			$gal=$galerie->getGalerie();
+			$nbPic = count($gal);
+			
+			if(isset($_POST['recherche']))
+			{
+				$src='%'.$_POST['recherche'].'%';
+				$rech=new actuManager;
+				$gal=$rech->getSearchG($src);
+				$nbPic = count($gal);
+			}
+			
+			include('views/galerie.php');
+			
 		}
 		//sinon renvoie la page d'erreur
 		else
@@ -213,7 +232,7 @@
 		
 		if(isset($_POST['recherche']))
 		{
-			$src=$_POST['recherche'].'%';
+			$src='%'.$_POST['recherche'].'%';
 			$rech=new vipManager;
 			$req=$rech->getSearchV($src);
 			$nbPic = count($req);

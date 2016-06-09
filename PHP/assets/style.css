@@ -3,7 +3,12 @@ html, body {
     height: 100%;
     margin: 0; 
 	padding: 0;
-	font-family: 'Calibri Light', Calibri, sans-serif;
+	font-family: "Calibri Light", Calibri;
+}
+
+@font-face {
+    font-family: "Calibri Light";
+    src: url('calibril.ttf');
 }
 
 body{
@@ -286,14 +291,15 @@ button{
 #listefilm{
 	
 	text-align: center;
+	display: inline-block;
 }
 
 #listefilm img{
 	width : 150px;
 	border: solid 10px white;
 	margin: 1px 20px;
-	display: inline;
 }
+
 /***************************************FILM********************************************/
 
 /************************************DETAIL FILM****************************************/
@@ -332,6 +338,26 @@ button{
 }
 
 /************************************DETAIL FILM****************************************/
+
+/************************************GALERIE****************************************/
+#galerie{
+	background-color: white;
+	padding: 5px;
+}
+
+#picture{
+	display: inline-block;
+	text-align: center;
+}
+
+#picture img{
+	height: 150px;
+}
+
+.msg{
+	text-align: center;
+}
+/************************************GALERIE****************************************/
 
 /********************************************ERREUR**********************************/
 #error{

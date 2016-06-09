@@ -37,7 +37,22 @@ class actuManager extends Model{
 		return $birth;
 	}
 	public function getSearchA($rech){
-		$rep=$this->executerRequete('SELECT numVip FROM VIP WHERE nomVip LIKE :rech OR prenomVip LIKE :rech ORDER BY prenomVip',
+		$rep=$this->executerRequete('SELECT * FROM VIP WHERE nomVip LIKE :rech OR prenomVip LIKE :rech OR CONCAT(prenomVip," ",nomVip) LIKE :rech OR CONCAT(nomVip," ",prenomVip) LIKE :rech ORDER BY prenomVip',
+		array(':rech'=>$rech));
+		$search=$rep->fetchAll();
+		$rep->closeCursor();
+		return $search;
+	}
+	
+	public function getGalerie(){
+		$rep=$this->executerRequete('SELECT * FROM PHOTO GROUP BY idPhoto ORDER BY datePhoto DESC ;');
+		$galerie=$rep->fetchAll();
+		$rep->closeCursor();
+		return $galerie;
+	}
+	
+	public function getSearchG($rech){
+		$rep=$this->executerRequete('SELECT * FROM PHOTO WHERE datePhoto LIKE :rech OR lieuPhoto LIKE :rech GROUP BY idPhoto ORDER BY datePhoto DESC;',
 		array(':rech'=>$rech));
 		$search=$rep->fetchAll();
 		$rep->closeCursor();

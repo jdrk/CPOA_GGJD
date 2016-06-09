@@ -107,5 +107,5 @@
 	<?php } ?>
 
 <?php $content=ob_get_clean(); ?>
-<?php $title=$data['prenomVip'].' '.$data['nomVip']; $rechpage='index.php?page=listevip';  $placeholder='nom ou prénom du vip ... '; $content; ?>
+<?php $title=$data['prenomVip'].' '.$data['nomVip']; $rechpage='index.php?page=listevip';  $placeholder='nom, prénom du vip ... '; $content; ?>
 <?php include("views/layout.php"); ?>
