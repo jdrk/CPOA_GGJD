@@ -5,27 +5,30 @@
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>jQuery(document).ready(function( $ ) {$('.counter').counterUp({delay: 10,time: 3000});});</script>
+<script>jQuery(document).ready(function( $ ) {$('.counterV').counterUp({delay: 5,time: 3000});});</script>
+<script>jQuery(document).ready(function( $ ) {$('.counterA').counterUp({delay: 5,time: 2500});});</script>
+<script>jQuery(document).ready(function( $ ) {$('.counterR').counterUp({delay: 5,time: 1500});});</script>
+<script>jQuery(document).ready(function( $ ) {$('.counterF').counterUp({delay: 5,time: 1000});});</script>
 	
 	<div id="panel">
 		<div id="nbvip">
-			<h1><span class="counter"><?php echo $nbVip; ?></span> VIP</h1>
-			<h1><i class="fa fa-users" aria-hidden="true"></i></h1>
+			<h1><span class="counterV"><?php echo $nbVip; ?></span> VIP<br/>
+			<i class="fa fa-users" aria-hidden="true"></i></h1>
 		</div>
 		
 		<div id="nbact">
-			<h1><span class="counter"><?php echo $nbAct; ?></span> ACTEURS</h1>
-			<h1><i class="fa fa-bullhorn" aria-hidden="true"></i></h1>
+			<h1><span class="counterA"><?php echo $nbAct; ?></span> ACTEURS<br/>
+			<i class="fa fa-bullhorn" aria-hidden="true"></i></h1>
 		</div>
 		
 		<div id="nbrea">
-			<h1><span class="counter"><?php echo $nbRea; ?></span> REALISATEURS</h1>
-			<h1><i class="fa fa-video-camera" aria-hidden="true"></i></h1>
+			<h1><span class="counterR"><?php echo $nbRea; ?></span> REALISATEURS<br/>
+			<i class="fa fa-video-camera" aria-hidden="true"></i></h1>
 		</div>
 		
-		<div id="nbrea">
-			<h1><span class="counter"><?php echo $nbFilm; ?></span> FILMS</h1>
-			<h1><i class="fa fa-film" aria-hidden="true"></i></h1>
+		<div id="nbfilm">
+			<h1><span class="counterF "><?php echo $nbFilm; ?></span> FILMS<br/>
+			<i class="fa fa-film" aria-hidden="true"></i></h1>
 		</div>
 	</div>
 	
@@ -49,5 +52,5 @@
 <script src="assets/js/waypoints.min.js"></script>
 <script src="assets/js/jquery.counterup.min.js"></script>
 <?php $content=ob_get_clean(); ?>
-<?php $title='ACTU'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom du vip ... '; $content; ?>
+<?php $title='ACTU'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom ...'; $content; ?>
 <?php include("views/layout.php"); ?>

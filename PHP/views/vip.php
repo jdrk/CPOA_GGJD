@@ -11,9 +11,9 @@
 				echo'<option value="Acteur et Réalisateur"'.keepSelected('AR',$libelle).'>Acteur et Réalisateur</option>';
 			?>
 		</select>
-		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="M")) echo "checked";?> value="M"><i class="fa fa-mars" aria-hidden="true"></i>
-		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="F")) echo "checked";?> value="F"><i class="fa fa-venus" aria-hidden="true"></i>
-		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="MF")) echo "checked";?> value="MF"><i class="fa fa-venus-mars" aria-hidden="true"></i>
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="M")) echo " checked";?> value="M"><i class="fa fa-mars" aria-hidden="true"></i>
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="F")) echo " checked";?> value="F"><i class="fa fa-venus" aria-hidden="true"></i>
+		<input type="radio" name="gender"<?php if (isset($gender) && ($gender=="MF")) echo " checked";?> value="MF"><i class="fa fa-venus-mars" aria-hidden="true"></i>
 		<button type="submit">FILTRER</button>
 	</form>
 	
@@ -52,5 +52,5 @@
 		</tr>
 	</table>
 <?php }$content=ob_get_clean(); ?>
-<?php $title='VIP'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom du vip ... '; $content; ?>
+<?php $title='VIP'; $rechpage='index.php?page=listevip'; $placeholder='nom, prénom ...'; $content; ?>
 <?php include("views/layout.php"); ?>

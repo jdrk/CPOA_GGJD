@@ -1,7 +1,7 @@
 <?php $content=ob_start(); ?>
 	
 		<div id="detailf">
-			<p><img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></a></p>
+			<p><img src="assets/img/film/<?php echo $data['idAffiche'];?>" alt="<?php echo $data['titreFilm'];?>"/></p>
 			<p><b><?php echo $data['titreFilm']; ?></b></p>
 			<p>Sortie en <?php echo $data['anneeSortie']; ?></p>
 			<p><?php echo $data['libelleGenre']; ?></p>
@@ -41,5 +41,5 @@
 		<?php } ?>
 		
 <?php $content=ob_get_clean(); ?>
-<?php $title=$data['titreFilm']; $rechpage='index.php?page=listefilm'; $placeholder='titre, année du film ...'; $content; ?>
+<?php $title=$data['titreFilm']; $rechpage='index.php?page=listefilm'; $placeholder='titre, numéro visa, année ...'; $content; ?>
 <?php include("views/layout.php"); ?>

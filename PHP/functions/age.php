@@ -1,5 +1,5 @@
 <?php 
-
+//fonction qui renvoie l'âge actuelle
 function age($date_naissance)
 {
 	$date_naissance = date("d-m-Y", strtotime($date_naissance)); 
@@ -11,5 +11,4 @@ function age($date_naissance)
 
     return $arr2[2] - $arr1[2] - 1;
 }
-
 ?>

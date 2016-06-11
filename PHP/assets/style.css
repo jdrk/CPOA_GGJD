@@ -4,6 +4,8 @@ html, body {
     margin: 0; 
 	padding: 0;
 	font-family: "Calibri Light", Calibri;
+	background: url(img/background.jpg) no-repeat center fixed;
+	background-size: cover;
 }
 
 @font-face {
@@ -97,7 +99,6 @@ footer{
 	color: white;
 	display: table-row;
 }
-
 /****************************************LAYOUT******************************************/
 
 /***************************************ACTUALITE****************************************/
@@ -155,10 +156,6 @@ footer{
 
 .grey {
     filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
 }
 
 .compteur{
@@ -169,11 +166,9 @@ footer{
 .counter{
 	color: #4F1A5C;
 }
-
 /*************************************ACTUALITE****************************************/
 
 /***************************************VIP********************************************/
-
 #form{
 	text-align: center;
 	margin-bottom: 30px;
@@ -255,7 +250,7 @@ button{
 	width: 75px;
 }
 
-#statut{
+.statut{
 	background-color: white;
 	float: right;
 	width: 62%;
@@ -284,26 +279,23 @@ button{
 	width: 100px;
 	border-radius: 75px;
 }
-/***************************************DETAIL VIP********************************************/
+/***************************************DETAIL VIP**************************************/
 
 /***************************************FILM********************************************/
-
-#listefilm{
+.listefilm{
 	
 	text-align: center;
 	display: inline-block;
 }
 
-#listefilm img{
+.listefilm img{
 	width : 150px;
 	border: solid 10px white;
 	margin: 1px 20px;
 }
-
 /***************************************FILM********************************************/
 
 /************************************DETAIL FILM****************************************/
-
 #detailf{
 	background-color: white;
 	padding: 1px 10px;
@@ -339,30 +331,34 @@ button{
 
 /************************************DETAIL FILM****************************************/
 
-/************************************GALERIE****************************************/
+/************************************GALERIE*******************************************/
 #galerie{
 	background-color: white;
 	padding: 5px;
 }
 
-#picture{
+.picture{
 	display: inline-block;
 	text-align: center;
 }
 
-#picture img{
+.picture img{
 	height: 150px;
 }
 
 .msg{
 	text-align: center;
 }
-/************************************GALERIE****************************************/
+/************************************GALERIE*****************************************/
 
-/********************************************ERREUR**********************************/
+/*************************************ERREUR*****************************************/
 #error{
 	background-color: #F6B3B3;
 	padding: 15px 30px;
 	border-left: solid 5px red;
 }
-/********************************************ERREUR**********************************/
+
+.loader{
+	width: 20px;
+}
+/*************************************ERREUR*****************************************/

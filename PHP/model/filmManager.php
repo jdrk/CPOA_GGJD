@@ -52,7 +52,7 @@ class filmManager extends Model{
 	}
 	
 	public function getSearchF($rech){
-		$rep=$this->executerRequete('SELECT * FROM FILM WHERE titreFilm LIKE :rech OR anneeSortie LIKE :rech',
+		$rep=$this->executerRequete('SELECT * FROM FILM WHERE titreFilm LIKE :rech OR anneeSortie LIKE :rech OR numVisa LIKE :rech',
 		array(':rech'=>$rech));
 		$search=$rep->fetchAll();
 		$rep->closeCursor();

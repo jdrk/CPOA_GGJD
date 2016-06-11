@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 09 Juin 2016 à 11:58
+-- Généré le: Sam 11 Juin 2016 à 20:58
 -- Version du serveur: 5.1.73
 -- Version de PHP: 5.3.3
 
@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `PHOTO` (
 --
 
 INSERT INTO `PHOTO` (`numVip`, `idPhoto`, `datePhoto`, `lieuPhoto`) VALUES
-('001', 'PH005.jpg', '2001-01-01', ''),
+('001', 'PH005.jpg', '2001-02-16', 'Miami'),
 ('002', 'PH003.jpg', '1000-01-01', ''),
 ('002', 'PH005.jpg', '1000-01-01', ''),
 ('004', 'PH002.jpg', '1000-01-01', ''),

@@ -59,7 +59,7 @@
 		echo'</div>';
 	} ?>
 
-	<div id="statut">
+	<div class="statut">
 		<?php
 		if($data['codeStatut']=='D'){
 			if($data['civilite']=='M'){
@@ -88,7 +88,7 @@
 	</div>
 	
 	<?php if(isset($nbaff4)&&$nbaff4!=0){?>
-	<div id="statut">
+	<div class="statut">
 		<h1><i class="fa fa-chain-broken" aria-hidden="true"></i> Les ex-conjoints</h1>
 		<?php foreach($recap as $list){ ?>
 			<p><b><a href="index.php?page=vip&amp;profil=<?php echo $list['numVip'];?>" ><?php echo $list['prenomVip'];?> <?php echo $list['nomVip'];?></a></b> - 
@@ -107,5 +107,5 @@
 	<?php } ?>
 
 <?php $content=ob_get_clean(); ?>
-<?php $title=$data['prenomVip'].' '.$data['nomVip']; $rechpage='index.php?page=listevip';  $placeholder='nom, prénom du vip ... '; $content; ?>
+<?php $title=$data['prenomVip'].' '.$data['nomVip']; $rechpage='index.php?page=listevip';  $placeholder='nom, prénom ...'; $content; ?>
 <?php include("views/layout.php"); ?>

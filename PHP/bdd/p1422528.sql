@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 05 Juin 2016 à 01:02
+-- Généré le: Sam 11 Juin 2016 à 20:58
 -- Version du serveur: 5.1.73
 -- Version de PHP: 5.3.3
 
@@ -27,8 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `ACTEUR` (
-  `numVip` varchar(3) NOT NULL DEFAULT '',
-  `numVisa` varchar(6) NOT NULL DEFAULT '',
+  `numVip` varchar(3) NOT NULL,
+  `numVisa` varchar(6) NOT NULL,
   PRIMARY KEY (`numVip`,`numVisa`),
   KEY `fk_acteur_visa` (`numVisa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -46,13 +46,16 @@ INSERT INTO `ACTEUR` (`numVip`, `numVisa`) VALUES
 ('004', '114028'),
 ('005', '114028'),
 ('009', '114028'),
+('056', '114028'),
 ('009', '119447'),
+('052', '123654'),
 ('014', '124871'),
 ('007', '126718'),
 ('012', '126718'),
 ('006', '131961'),
 ('011', '131961'),
 ('044', '140989'),
+('052', '142953'),
 ('013', '143257'),
 ('016', '143257'),
 ('008', '143552'),
@@ -66,9 +69,9 @@ INSERT INTO `ACTEUR` (`numVip`, `numVisa`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `FILM` (
-  `numVisa` varchar(6) NOT NULL DEFAULT '',
-  `titreFilm` varchar(100) NOT NULL DEFAULT '',
-  `idGenre` varchar(2) NOT NULL DEFAULT '',
+  `numVisa` varchar(6) NOT NULL,
+  `titreFilm` varchar(100) NOT NULL,
+  `idGenre` varchar(2) NOT NULL,
   `anneeSortie` int(4) NOT NULL,
   `idAffiche` varchar(10) NOT NULL DEFAULT '000000.jpg',
   PRIMARY KEY (`numVisa`),
@@ -89,8 +92,10 @@ INSERT INTO `FILM` (`numVisa`, `titreFilm`, `idGenre`, `anneeSortie`, `idAffiche
 ('126718', 'INCEPTION', '10', 2010, '126718.jpg'),
 ('131961', 'HUNGER GAMES', '10', 2012, '131961.jpg'),
 ('140989', 'COMMENT TUER SON BOSS 2', '04', 2014, '140989.jpg'),
+('142953', 'SEUL SUR MARS ', '10', 2015, '142953.jpg'),
 ('143257', 'À VIF !', '04', 2015, '143257.jpg'),
 ('143552', 'LA 5ÈME VAGUE', '10', 2016, '143552.jpg'),
+('5554', 'CACA PROUT', '13', 2019, '5554.gif'),
 ('90813', 'LE CINQUIÈME ÉLÉMENT', '10', 1997, '90813.jpg');
 
 -- --------------------------------------------------------
@@ -100,8 +105,8 @@ INSERT INTO `FILM` (`numVisa`, `titreFilm`, `idGenre`, `anneeSortie`, `idAffiche
 --
 
 CREATE TABLE IF NOT EXISTS `GENRE` (
-  `idGenre` varchar(2) NOT NULL DEFAULT '',
-  `libelleGenre` varchar(30) DEFAULT NULL,
+  `idGenre` varchar(2) NOT NULL,
+  `libelleGenre` varchar(30) NOT NULL,
   PRIMARY KEY (`idGenre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -131,8 +136,8 @@ INSERT INTO `GENRE` (`idGenre`, `libelleGenre`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `NATIONALITE` (
-  `idNat` varchar(2) NOT NULL DEFAULT '',
-  `nomNat` varchar(30) NOT NULL DEFAULT '',
+  `idNat` varchar(2) NOT NULL,
+  `nomNat` varchar(30) NOT NULL,
   PRIMARY KEY (`idNat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -163,11 +168,11 @@ INSERT INTO `NATIONALITE` (`idNat`, `nomNat`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `NEWEVENT` (
-  `numVip` varchar(3) NOT NULL DEFAULT '',
+  `numVip` varchar(3) NOT NULL,
   `dateMariage` date NOT NULL,
   `numVipConjoint` varchar(3) NOT NULL,
-  `lieuMariage` varchar(20) DEFAULT NULL,
-  `dateDivorce` date DEFAULT '1000-01-01',
+  `lieuMariage` varchar(20) NOT NULL DEFAULT 'Inconnu',
+  `dateDivorce` date NOT NULL DEFAULT '1000-01-01',
   PRIMARY KEY (`numVip`,`dateMariage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -200,10 +205,7 @@ INSERT INTO `NEWEVENT` (`numVip`, `dateMariage`, `numVipConjoint`, `lieuMariage`
 ('035', '1986-03-03', '039', 'Inconnu', '1991-10-10'),
 ('035', '1992-03-17', '038', 'Inconnu', '1997-06-07'),
 ('035', '1997-12-14', '037', 'Inconnu', '1999-01-30'),
-('035', '2004-08-28', '036', 'Inconnu', '1000-01-01'),
-('051', '2016-06-09', '052', 'test', '2016-10-12'),
-('053', '2015-06-07', '054', 'Inconnu', '2016-06-16'),
-('053', '2017-10-10', '054', 'Inconnu', '2018-10-10');
+('035', '2004-08-28', '036', 'Inconnu', '1000-01-01');
 
 --
 -- Déclencheurs `NEWEVENT`
@@ -253,11 +255,14 @@ CREATE TRIGGER `checkNewMariage` BEFORE INSERT ON `NEWEVENT`
 	
 	DECLARE codeS1 VARCHAR(1);
 	DECLARE codeS2 VARCHAR(1);
+	DECLARE vip1 VARCHAR(3);
+	DECLARE vip2 VARCHAR(4);
 	DECLARE dateD1 DATE;
 	DECLARE dateD2 DATE;
 	DECLARE statutM_e CONDITION FOR SQLSTATE '45001';
 	DECLARE vipIdentique_e CONDITION FOR SQLSTATE '45002';
 	DECLARE dateDivorceI_e CONDITION FOR SQLSTATE '45003';
+	DECLARE numVipI_e CONDITION FOR SQLSTATE '45004';
 
 	SELECT codeStatut INTO codeS1
 	FROM VIP
@@ -275,6 +280,14 @@ CREATE TRIGGER `checkNewMariage` BEFORE INSERT ON `NEWEVENT`
 	FROM NEWEVENT
 	WHERE numVipConjoint=NEW.numVipConjoint;
 
+	SELECT COUNT(numVip) INTO vip1
+	FROM VIP
+	WHERE numVip=NEW.numVip;
+
+	SELECT COUNT(numVip) INTO vip2
+	FROM VIP
+	WHERE numVip=NEW.numVipConjoint;
+
 	IF(NEW.numVip=NEW.numVipConjoint) THEN
 		CALL vipIdentique_e;
 	END IF;
@@ -287,6 +300,10 @@ CREATE TRIGGER `checkNewMariage` BEFORE INSERT ON `NEWEVENT`
        CALL dateDivorceI_e;
     END IF;
 
+	IF(vip1=0 OR vip2=0) THEN
+		CALL numVipI_e;
+	END IF;
+
 END
 //
 DELIMITER ;
@@ -298,10 +315,10 @@ DELIMITER ;
 --
 
 CREATE TABLE IF NOT EXISTS `PHOTO` (
-  `numVip` varchar(3) NOT NULL DEFAULT '',
-  `idPhoto` varchar(10) NOT NULL DEFAULT '',
-  `datePhoto` date DEFAULT NULL,
-  `lieuPhoto` varchar(20) DEFAULT NULL,
+  `numVip` varchar(3) NOT NULL,
+  `idPhoto` varchar(30) NOT NULL,
+  `datePhoto` date NOT NULL DEFAULT '1000-01-01',
+  `lieuPhoto` varchar(20) NOT NULL DEFAULT 'Inconnu',
   PRIMARY KEY (`numVip`,`idPhoto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -310,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `PHOTO` (
 --
 
 INSERT INTO `PHOTO` (`numVip`, `idPhoto`, `datePhoto`, `lieuPhoto`) VALUES
-('001', 'PH005.jpg', '1000-01-01', ''),
+('001', 'PH005.jpg', '2001-02-16', 'Miami'),
 ('002', 'PH003.jpg', '1000-01-01', ''),
 ('002', 'PH005.jpg', '1000-01-01', ''),
 ('004', 'PH002.jpg', '1000-01-01', ''),
@@ -325,6 +342,27 @@ INSERT INTO `PHOTO` (`numVip`, `idPhoto`, `datePhoto`, `lieuPhoto`) VALUES
 ('015', 'PH007.jpg', '1000-01-01', ''),
 ('016', 'PH004.jpg', '1000-01-01', '');
 
+--
+-- Déclencheurs `PHOTO`
+--
+DROP TRIGGER IF EXISTS `checkPhoto`;
+DELIMITER //
+CREATE TRIGGER `checkPhoto` BEFORE INSERT ON `PHOTO`
+ FOR EACH ROW BEGIN
+    DECLARE vip VARCHAR(3);
+    DECLARE photo_e CONDITION FOR SQLSTATE '45005';
+    
+    SELECT COUNT(numVip) INTO vip
+    FROM VIP
+    WHERE numVip=NEW.numVip;
+    
+    IF(vip=0) THEN
+        CALL numVipI_e;
+    END IF;
+END
+//
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -332,8 +370,8 @@ INSERT INTO `PHOTO` (`numVip`, `idPhoto`, `datePhoto`, `lieuPhoto`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `REALISATEUR` (
-  `numVip` varchar(3) NOT NULL DEFAULT '',
-  `numVisa` varchar(6) NOT NULL DEFAULT '',
+  `numVip` varchar(3) NOT NULL,
+  `numVisa` varchar(6) NOT NULL,
   PRIMARY KEY (`numVip`,`numVisa`),
   KEY `fk_realisateur_visa` (`numVisa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -348,10 +386,12 @@ INSERT INTO `REALISATEUR` (`numVip`, `numVisa`) VALUES
 ('034', '113868'),
 ('017', '114028'),
 ('034', '119447'),
+('051', '123654'),
 ('036', '124871'),
 ('025', '126718'),
 ('029', '131961'),
 ('031', '140989'),
+('053', '142953'),
 ('050', '143257'),
 ('032', '143552'),
 ('012', '534354'),
@@ -364,15 +404,15 @@ INSERT INTO `REALISATEUR` (`numVip`, `numVisa`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `VIP` (
-  `numVip` varchar(3) NOT NULL DEFAULT '',
-  `nomVip` varchar(20) NOT NULL DEFAULT '',
-  `prenomVip` varchar(20) NOT NULL DEFAULT '',
-  `civilite` varchar(1) NOT NULL DEFAULT '',
+  `numVip` varchar(3) NOT NULL,
+  `nomVip` varchar(20) NOT NULL,
+  `prenomVip` varchar(20) NOT NULL,
+  `civilite` varchar(1) NOT NULL,
   `dateNaissance` date NOT NULL,
-  `lieuNaissance` varchar(20) NOT NULL DEFAULT '',
-  `codeRole` varchar(2) NOT NULL DEFAULT '',
+  `lieuNaissance` varchar(20) NOT NULL DEFAULT 'Inconnu',
+  `codeRole` varchar(2) NOT NULL,
   `codeStatut` varchar(1) NOT NULL DEFAULT 'C',
-  `nationalite` varchar(30) NOT NULL DEFAULT '',
+  `nationalite` varchar(30) NOT NULL,
   `idProfil` varchar(10) NOT NULL DEFAULT 'P00.jpg',
   PRIMARY KEY (`numVip`),
   KEY `fk_pays` (`nationalite`)
@@ -433,12 +473,9 @@ INSERT INTO `VIP` (`numVip`, `nomVip`, `prenomVip`, `civilite`, `dateNaissance`,
 ('048', 'ESPOSITO', 'Jennifer', 'F', '1973-04-11', 'New York', 'AC', 'D', 'US', 'P48.jpg'),
 ('049', 'BALSAM', 'Talia', 'F', '1959-03-05', 'New York', 'AC', 'D', 'US', 'P49.jpg'),
 ('050', 'WELLS', 'John', 'M', '1956-05-28', 'Alexandria', 'RE', 'C', 'US', 'P50.jpg'),
-('051', 'A', 'A', 'M', '1999-06-03', 'a', 'AC', 'D', 'FR', 'P00.jpg'),
-('052', 'B', 'B', 'M', '2016-06-02', 'b', 'AC', 'D', 'FR', 'P00.jpg'),
-('053', 'C', 'C', 'M', '2012-06-16', 'C', 'AC', 'D', 'FR', 'P00.jpg'),
-('054', 'D', 'D', 'M', '2012-06-16', 'D', 'AC', 'D', 'IT', 'P00.jpg'),
-('056', 'E', 'E', 'M', '2016-06-17', 'ici', 'AC', 'C', 'FR', 'P00.jpg'),
-('057', 'E', 'E', 'M', '2016-06-17', 'ici', 'AC', 'C', 'FR', 'P00.jpg');
+('052', 'DAMON', 'Matt', 'M', '1970-10-08', 'Boston', 'AC', 'C', 'US', 'P052.PNG'),
+('053', 'SCOTT', 'Ridley', 'M', '1970-11-30', 'South Shields', 'RE', 'C', 'UK', 'P00.jpg'),
+('056', 'GRINT ', 'Rupert', 'M', '2016-08-24', 'Watton-at-Stone', 'AC', 'C', 'FR', 'P056.PNG');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

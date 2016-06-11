@@ -12,7 +12,7 @@
 		<?php
 		foreach($gal as $gale) {?>
 	
-		<div id="picture">
+		<div class="picture">
 			<p><img src="assets/img/photo/<?php echo $gale['idPhoto']?>" alt="<?php echo $gale['idPhoto']?>"/></p>
 			<p><?php echo datef($gale['datePhoto']); ?> - <?php echo $gale['lieuPhoto'];?></p>
 		</div>
@@ -23,5 +23,5 @@
 	}?>
 	
 <?php $content=ob_get_clean(); ?>
-<?php $title='GALERIE'; $rechpage='index.php?page=galerie'; $placeholder='année, lieu '; $content; ?>
+<?php $title='GALERIE'; $rechpage='index.php?page=galerie'; $placeholder='année, lieu ...'; $content; ?>
 <?php include("views/layout.php"); ?>
