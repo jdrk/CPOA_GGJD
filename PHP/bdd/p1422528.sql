@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 11 Juin 2016 à 20:58
+-- Généré le: Jeu 16 Juin 2016 à 18:21
 -- Version du serveur: 5.1.73
 -- Version de PHP: 5.3.3
 
@@ -65,6 +65,31 @@ INSERT INTO `ACTEUR` (`numVip`, `numVisa`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `Atome`
+--
+
+CREATE TABLE IF NOT EXISTS `Atome` (
+  `Symbole` varchar(3) NOT NULL,
+  `Nom` varchar(40) NOT NULL,
+  `Mr` float NOT NULL,
+  PRIMARY KEY (`Symbole`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Atome`
+--
+
+INSERT INTO `Atome` (`Symbole`, `Nom`, `Mr`) VALUES
+('C', 'CARBONE', 12.011),
+('Cl', 'CHLORE', 35.453),
+('Fe', 'FER', 55.845),
+('H', 'HYDROGENE', 1.0079),
+('Na', 'SODIUM', 22.99),
+('O', 'OXYGENE', 15.999);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `FILM`
 --
 
@@ -95,7 +120,6 @@ INSERT INTO `FILM` (`numVisa`, `titreFilm`, `idGenre`, `anneeSortie`, `idAffiche
 ('142953', 'SEUL SUR MARS ', '10', 2015, '142953.jpg'),
 ('143257', 'À VIF !', '04', 2015, '143257.jpg'),
 ('143552', 'LA 5ÈME VAGUE', '10', 2016, '143552.jpg'),
-('5554', 'CACA PROUT', '13', 2019, '5554.gif'),
 ('90813', 'LE CINQUIÈME ÉLÉMENT', '10', 1997, '90813.jpg');
 
 -- --------------------------------------------------------
@@ -148,6 +172,7 @@ CREATE TABLE IF NOT EXISTS `NATIONALITE` (
 INSERT INTO `NATIONALITE` (`idNat`, `nomNat`) VALUES
 ('AU', 'australienne'),
 ('BE', 'belge'),
+('CA', 'canadien'),
 ('CH', 'suisse'),
 ('CN', 'chinoise'),
 ('DE', 'allemande'),
@@ -328,19 +353,20 @@ CREATE TABLE IF NOT EXISTS `PHOTO` (
 
 INSERT INTO `PHOTO` (`numVip`, `idPhoto`, `datePhoto`, `lieuPhoto`) VALUES
 ('001', 'PH005.jpg', '2001-02-16', 'Miami'),
-('002', 'PH003.jpg', '1000-01-01', ''),
-('002', 'PH005.jpg', '1000-01-01', ''),
-('004', 'PH002.jpg', '1000-01-01', ''),
-('005', 'PH002.jpg', '1000-01-01', ''),
-('006', 'PH001.jpg', '1000-01-01', ''),
-('007', 'PH006.jpg', '1000-01-01', ''),
-('010', 'PH003.jpg', '1000-01-01', ''),
-('011', 'PH001.jpg', '1000-01-01', ''),
-('011', 'PH004.jpg', '1000-01-01', ''),
-('012', 'PH006.jpg', '1000-01-01', ''),
-('014', 'PH007.jpg', '1000-01-01', ''),
-('015', 'PH007.jpg', '1000-01-01', ''),
-('016', 'PH004.jpg', '1000-01-01', '');
+('002', 'PH003.jpg', '2009-01-01', 'Cannes'),
+('002', 'PH005.jpg', '2001-02-16', 'Miami'),
+('004', 'PH002.jpg', '2005-01-01', 'Londres'),
+('005', 'PH002.jpg', '2005-01-01', 'Londres'),
+('006', 'PH001.jpg', '2016-01-01', 'Hollywood'),
+('007', 'PH006.jpg', '2010-01-01', 'New York'),
+('010', 'PH003.jpg', '2009-01-01', 'Cannes'),
+('011', 'PH001.jpg', '2016-01-01', 'Hollywood'),
+('011', 'PH004.jpg', '2015-01-01', 'Hollywood'),
+('012', 'PH006.jpg', '2010-01-01', 'New York'),
+('014', 'PH007.jpg', '2009-01-01', 'Paris'),
+('015', 'PH007.jpg', '2009-01-01', 'Paris'),
+('016', 'PH004.jpg', '2015-01-01', 'Hollywood'),
+('056', 'PH002.jpg', '2005-01-01', 'Londres');
 
 --
 -- Déclencheurs `PHOTO`
@@ -473,9 +499,12 @@ INSERT INTO `VIP` (`numVip`, `nomVip`, `prenomVip`, `civilite`, `dateNaissance`,
 ('048', 'ESPOSITO', 'Jennifer', 'F', '1973-04-11', 'New York', 'AC', 'D', 'US', 'P48.jpg'),
 ('049', 'BALSAM', 'Talia', 'F', '1959-03-05', 'New York', 'AC', 'D', 'US', 'P49.jpg'),
 ('050', 'WELLS', 'John', 'M', '1956-05-28', 'Alexandria', 'RE', 'C', 'US', 'P50.jpg'),
-('052', 'DAMON', 'Matt', 'M', '1970-10-08', 'Boston', 'AC', 'C', 'US', 'P052.PNG'),
-('053', 'SCOTT', 'Ridley', 'M', '1970-11-30', 'South Shields', 'RE', 'C', 'UK', 'P00.jpg'),
-('056', 'GRINT ', 'Rupert', 'M', '2016-08-24', 'Watton-at-Stone', 'AC', 'C', 'FR', 'P056.PNG');
+('052', 'DAMON', 'Matt', 'M', '1970-10-08', 'Boston', 'AC', 'C', 'UK', 'P052.png'),
+('053', 'SCOTT', 'Ridley', 'M', '1970-11-30', 'South Shields', 'RE', 'C', 'UK', 'P053.jpg'),
+('054', 'ANIVERZER', 'Simon', 'M', '1995-06-17', 'Lyon', 'AC', 'C', 'FR', 'P00.jpg'),
+('056', 'GRINT ', 'Rupert', 'M', '1988-08-24', 'Watton-at-Stone', 'AC', 'C', 'UK', 'P056.jpg'),
+('059', 'THREAPLETON', 'Jim', 'M', '1973-01-08', 'North Yorkshire', 'RE', 'C', 'UK', 'P059.jpg'),
+('060', 'MENDES', 'Sam', 'M', '1965-08-01', 'Reading', 'RE', 'C', 'UK', 'P060.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
